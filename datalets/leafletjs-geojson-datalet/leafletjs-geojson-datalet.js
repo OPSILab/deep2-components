@@ -88,7 +88,13 @@ class LeafletGeoJsonDatalet extends BaseDatalet
                 if (data.length > 1) {
                     let popupText = "";
                     for (let j = 1; j < data.length; j++) {
-                        if (data[j].data[i] && typeof data[j] !== 'undefined' && data[j].data[i] && typeof data[j].data[i] !== 'undefined') {
+                        if(data[j].data[i] instanceof Object){
+                            for (var prop in data[j].data[i]) {
+                                if (data[j].data[i].hasOwnProperty(prop)) {
+                                   popupText += '<span>' + prop + ' : ' + data[j].data[i][prop] + '</span><br/>'
+                                }
+                            }
+                        }else if (data[j].data[i] && typeof data[j] !== 'undefined' && data[j].data[i] && typeof data[j].data[i] !== 'undefined') {
                             if (data[j].data[i].toString().match(new RegExp("(https?:\/\/.*\.(?:png|jpg|jpeg|gif))", 'i')))
                                 popupText += '<image height="100" width="100" src="' + data[j].data[i] + '" /><br/>';
                             else if (data[j].data[i].toString().match(new RegExp("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[0-9a-zA-Z]{1,3})+)(/(.)*)?(\\?(.)*)?")))
@@ -105,6 +111,7 @@ class LeafletGeoJsonDatalet extends BaseDatalet
 
             map._onResize();
             map.invalidateSize(false);
+            map.fitBounds(geo_layer);
         } catch (e) {
             console.log()
         }

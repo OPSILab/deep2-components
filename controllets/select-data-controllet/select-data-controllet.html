@@ -5,15 +5,35 @@
 <link rel="import" href="../expert-query-controllet/expert-query-controllet.html" />
 
 <link rel="import" href="../providers-utility-controllet/providers-utility-controllet.html" />
-
+<link rel="import" href="../file-parser-controllet/file-parser-controllet.html" />
 <script type="text/javascript" src="../../alasql-utility/alasql.min.js"></script>
 <script type="text/javascript" src="../../alasql-utility/alasql-utility.js"></script>
-
+<script type="text/javascript" src="../../configuration.js"></script>
 <script type="text/javascript" src="../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
 
 <dom-module id="select-data-controllet">
 
     <style is="custom-style">
+
+		/*SPINNER*/
+		paper-spinner {
+                height: 64px;
+                width: 64px;
+
+                --paper-spinner-stroke-width: 8px;
+
+
+                --paper-spinner-layer-1-color: #00b4ff;
+                --paper-spinner-layer-2-color: #F44336;;
+                --paper-spinner-layer-3-color: #FFEB3B;;
+                --paper-spinner-layer-4-color: #4CAF50;;
+        }
+	
+		#select_data_spinner {
+            width: 100%;
+            padding: 168px calc(50% - 32px);
+        }
+		/*SPINNER*/
 
         #select_data_controllet_container {
             display: flex;
@@ -57,6 +77,9 @@
         <providers-utility-controllet></providers-utility-controllet>
 
         <div id="select_data_controllet_container">
+        	<div id="select_data_spinner">
+				<paper-spinner id="select_spinner" active></paper-spinner>
+			</div>
             <div id="fields_container">
                 <select-fields-controllet id="select_fields"></select-fields-controllet>
             </div>
@@ -80,16 +103,26 @@
 
             properties : {
 
-                deepUrl : {
-                    type : String,
-                    value : undefined
-                },
-
-                dataUrl : {
+            	dataUrl : {
                     type  : String,
                     value : undefined
                 },
-
+				format : {
+                    type  : String,
+                    value : undefined
+                },
+				nodeID : {
+                    type  : String,
+                    value : undefined
+                },
+				datasetID : {
+                    type  : String,
+                    value : undefined
+                },
+				distributionID : {
+                    type  : String,
+                    value : undefined
+                },
                 data : {
                     type  : Object,
                     value : undefined
@@ -218,24 +251,138 @@
                 this.$.data_table.setData(this.getData());
             },
 
-            init : function() {
-                if(this.dataUrl) {
+//             init : function() {
+//                 if(this.dataUrl) {
 
+//                     var that = this;
+
+//                     if(window.location.protocol.startsWith("https") && !this.dataUrl.startsWith("https"))
+//                         this.dataUrl = `${this.deepUrl}cors-proxy/proxy.php?csurl=${that.dataUrl}`;
+
+//                     $.ajax({
+//                         url: this.dataUrl,
+//                         dataType: "json",
+//                         success: function(data){
+//                             that.reset();
+
+//                             var f = Object.create(providerFactory);
+//                             var provider = f.getProvider(that.dataUrl);
+//                             data = provider.selectData(data);
+
+//                             var converter = new DataTypeConverter();
+//                             var result = converter.inferJsonDataType(data, ["*"]);
+//                             result = converter.cast(result);
+//                             that.fields = utility_getFields(result.types);
+//                             data = result.dataset;
+//                             that.data = alasql_QUERY(data, that.fields, null, null, null);
+
+//                             that.$.select_fields.setFields(that.fields);
+//                             that.$.expert.setFields(that.fields);
+// //                            that.$.expert.setSelectedFields(that.selectedFields);
+
+//                             that.fire('data-ready', {ready : true, url : that.dataUrl});
+//                         },
+//                         error: function(){
+
+//                             if(that.dataUrl.indexOf("cors-proxy") > -1) {
+//                                 that.fire('data-ready', {ready : false});
+//                                 return;
+//                             }
+
+//                             that.dataUrl = `${that.deepUrl}cors-proxy/proxy.php?csurl=${that.dataUrl}`;
+
+//                             $.ajax({
+//                                 url: that.dataUrl,
+//                                 dataType: "json",
+//                                 success: function(data){
+//                                     that.reset();
+
+//                                     var f = Object.create(providerFactory);
+//                                     var provider = f.getProvider(that.dataUrl);
+//                                     data = provider.selectData(data);
+
+//                                     var converter = new DataTypeConverter();
+//                                     var result = converter.inferJsonDataType(data, ["*"]);
+//                                     result = converter.cast(result);
+//                                     that.fields = utility_getFields(result.types);
+//                                     data = result.dataset;
+//                                     that.data = alasql_QUERY(data, that.fields, null, null, null);
+
+//                                     that.$.select_fields.setFields(that.fields);
+//                                     that.$.expert.setFields(that.fields);
+
+//                                     that.fire('data-ready', {ready : true, url : that.dataUrl});
+//                                 },
+//                                 error: function(){
+//                                     that.fire('data-ready', {ready : false});
+//                                 }
+//                             });
+
+//                         }
+//                     });
+//                 }
+
+//                 else {
+//                     this.reset();
+
+//                     var converter = new DataTypeConverter();
+//                     var result = converter.inferJsonDataType(this.data, ["*"]);
+//                     result = converter.cast(result);
+//                     this.fields = utility_getFields(result.types);
+//                     data = result.dataset;
+//                     this.data = alasql_QUERY(data, this.fields, null, null, null);
+
+//                     this.$.select_fields.setFields(this.fields);
+//                     this.$.expert.setFields(this.fields);
+// //                    this.$.expert.setSelectedFields(this.selectedFields);
+//                 }
+//             },
+			removeLoader: function() {
+                this.$.select_data_spinner.style.display = "none";
+				this.$.select_spinner.active = false;
+				//this.select_data_controllet_container.style.visible = "true";
+            },
+			init : function() {
+                if(this.dataUrl) {
+					//this.$.select_data_controllet_container.style.visible = "false";
                     var that = this;
 
-                    if(window.location.protocol.startsWith("https") && !this.dataUrl.startsWith("https"))
-                        this.dataUrl = `${this.deepUrl}cors-proxy/proxy.php?csurl=${that.dataUrl}`;
-
                     $.ajax({
-                        url: this.dataUrl,
-                        dataType: "json",
-                        success: function(data){
+                        //url: "http://localhost:8080/Idra/api/v1/client/downloadFromUri?format="+this.format+"&url="+this.dataUrl,
+                        url: getODFUrl()+"Idra/api/v1/client/downloadFromUri?format="+this.format+"&url="+this.dataUrl,
+                        //dataType: "json",
+                        success: function(data, textStatus, xhr){
                             that.reset();
+							
+							var contentType=xhr.getResponseHeader('Content-Type');
+							var originalFileFormat=xhr.getResponseHeader('original-file-format');
+							var format = that.format;
+							var ultimateFormat = undefined;
+							
+							if(!(format==undefined || format==null || format==false)){
+								ultimateFormat = format;
+							}else if(!(originalFileFormat==undefined || originalFileFormat==null || originalFileFormat==false)){
+								ultimateFormat = originalFileFormat;
+							}else{
+								ultimateFormat = contentType;
+							}
 
+							var p = Object.create(fileParserFactory);
+							var parser = p.checkFile(ultimateFormat.toLowerCase());
+							data=parser.parse(data);
+							
+							that.removeLoader();
+							
+							if(data==''){
+								alert("Error while parsing file.")
+								return;
+							}
+							
                             var f = Object.create(providerFactory);
-                            var provider = f.getProvider(that.dataUrl);
-                            data = provider.selectData(data);
-
+							var provider = f.getProvider(that.dataUrl);
+				
+                            data = provider.selectData(data);							
+							
                             var converter = new DataTypeConverter();
                             var result = converter.inferJsonDataType(data, ["*"]);
                             result = converter.cast(result);
@@ -245,46 +392,17 @@
 
                             that.$.select_fields.setFields(that.fields);
                             that.$.expert.setFields(that.fields);
+														
+							//that.removeLoader();
+							
 //                            that.$.expert.setSelectedFields(that.selectedFields);
 
-                            that.fire('data-ready', {ready : true, url : that.dataUrl});
+                            //that.fire('data-ready', {ready : true});
                         },
                         error: function(){
-
-                            if(that.dataUrl.indexOf("cors-proxy") > -1) {
-                                that.fire('data-ready', {ready : false});
-                                return;
-                            }
-
-                            that.dataUrl = `${that.deepUrl}cors-proxy/proxy.php?csurl=${that.dataUrl}`;
-
-                            $.ajax({
-                                url: that.dataUrl,
-                                dataType: "json",
-                                success: function(data){
-                                    that.reset();
-
-                                    var f = Object.create(providerFactory);
-                                    var provider = f.getProvider(that.dataUrl);
-                                    data = provider.selectData(data);
-
-                                    var converter = new DataTypeConverter();
-                                    var result = converter.inferJsonDataType(data, ["*"]);
-                                    result = converter.cast(result);
-                                    that.fields = utility_getFields(result.types);
-                                    data = result.dataset;
-                                    that.data = alasql_QUERY(data, that.fields, null, null, null);
-
-                                    that.$.select_fields.setFields(that.fields);
-                                    that.$.expert.setFields(that.fields);
-
-                                    that.fire('data-ready', {ready : true, url : that.dataUrl});
-                                },
-                                error: function(){
-                                    that.fire('data-ready', {ready : false});
-                                }
-                            });
-
+                            that.fire('data-ready', {ready : false});
+							that.removeLoader();
+							alert("Error retrieving data from url");
                         }
                     });
                 }

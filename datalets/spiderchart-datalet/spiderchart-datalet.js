@@ -14,7 +14,7 @@ class SpiderchartDatalet extends BaseDatalet
     {
         try {
             //{requestData:0}, {selectData:0}, {filterData:0}, {trasformData:0} -> [0, 0, 0, 0]
-            this.set_behaviours(['../lib/modules/AjaxJsonAlasqlBehavior.js', '../lib/modules/HighChartsBehavior.js'], [0, 0, 0, 1]);
+            this.set_behaviours([AjaxJsonAlasqlBehavior, HighChartsBehavior], [0, 0, 0, 1]);
         } catch (e) {
             console.log("ERROR");
             console.log(e);
@@ -23,8 +23,11 @@ class SpiderchartDatalet extends BaseDatalet
 
     template()
     {
-        const template = this.currentDocument.querySelector('#spiderchart-datalet');
-        return template.content.cloneNode(true);
+        // console.log("SPIDER")
+        // console.log(document.querySelectorAll()) 
+        // const template = document.querySelector('#spiderchart-datalet');
+        // return template.content.cloneNode(true);
+        return this.create_node('');
     }
 
     async render(data)

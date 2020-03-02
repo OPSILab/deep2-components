@@ -26,7 +26,14 @@ export default class BaseDatalet extends HTMLElement {
 
     connectedCallback()
     {
-        this.data_url = this.getAttribute("data-url");
+        this.data_url = decodeURIComponent(this.getAttribute("data-url"));        
+
+        this.nodeID = this.getAttribute("nodeID");
+        this.format = this.getAttribute("format");
+        this.datasetID = this.getAttribute("datasetID");
+        this.distributionID = this.getAttribute("distributionID");
+        this.idraURL = this.getAttribute("idraURL");
+
         this.selected_fields = this.getAttribute("selectedfields");
         this.filters = this.getAttribute("filters");
         this.aggregators = this.getAttribute("aggregators");
@@ -36,7 +43,7 @@ export default class BaseDatalet extends HTMLElement {
         this.cache = this.getAttribute("data");
 
         const base_instance        = this.create_node(DataletBaseTemplate);
-        const base_datalet_baseUri = this.deepUri + '/COMPONENTS/datalets/base-datalet/';
+        const base_datalet_baseUri = this.deepUri + '/deep-components/datalets/base-datalet/';
 
         //GET DERIVED CLASS TEMPLATE
         let template = this.template();
@@ -111,7 +118,6 @@ export default class BaseDatalet extends HTMLElement {
 
                 modules.push(m);
             }
-
             this.requestData   = modules[config[0]].requestData;
             this.selectData    = modules[config[1]].selectData;
             this.filterData    = modules[config[2]].filterData;
@@ -125,7 +131,8 @@ export default class BaseDatalet extends HTMLElement {
     }
 
     async work_cycle() {
-        if (!this.cache || (typeof ODE === 'undefined' && typeof parent.ODE === 'undefined'))
+        //if (!this.cache || (typeof ODE === 'undefined' && typeof parent.ODE === 'undefined'))
+        if (!this.cache)
             this.use_live_data();
         else
             this.use_cache();
@@ -136,10 +143,10 @@ export default class BaseDatalet extends HTMLElement {
             this.live = true;
 
             if(this.isProxyRequired())
-                this.data_url = `${this.deepUri}/DEEP/cors-proxy/proxy.php?csurl=${this.data_url}`;
+                this.data_url = `${this.deepUri}/deep/cors-proxy/proxy.php?csurl=${this.data_url}`;
 
-            let json_results = await this.requestData(this.data_url);
-            this.data = this.selectData(json_results, this.data_url);
+            let json_results = await this.requestData(this.data_url,this.nodeID,this.datasetID,this.distributionID,this.idraURL,this.format);
+            this.data = this.selectData(json_results.data,json_results.contentType, this.data_url);
             this.filtered_data = this.filterData(this.data, this.selected_fields, this.filters, this.aggregators, this.orders);
 
             this.hide_loader();
@@ -739,7 +746,8 @@ export default class BaseDatalet extends HTMLElement {
     }
 
     get_html() {
-        let baseUri = this.baseUri.replace('http:', 'https:');
+        //let baseUri = this.baseUri.replace('http:', 'https:');
+		let baseUri = this.baseUri;
 
         //let script = `<script src="${baseUri}../lib/vendors/webcomponents_polyfill_ff/webcomponents-hi-sd-ce.js"></script>`;
         let script = `<script src="${baseUri}../lib/vendors/webcomponents_lite_polyfill/webcomponents-lite.js"></script>`;

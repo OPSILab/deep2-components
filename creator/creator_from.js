@@ -1,6 +1,7 @@
 CREATOR_FROM = {};
 
 CREATOR_FROM.injectHTML  = function(ln, datasets) {
+	
     let url_string = window.location.href;
     let url = new URL(url_string);
     let dataUrl = url.searchParams.get("data-url");
@@ -12,9 +13,9 @@ CREATOR_FROM.injectHTML  = function(ln, datasets) {
     $("body").append(
         '<co-datalets-creator-controllet'+
         ' id="controllet"'+
-        ' components-url="../COMPONENTS/"'+
-        ' deep-url="../DEEP/"'+
-        ' datalets-list-url="../DEEP/datalets-list"'+
+        ' components-url="../deep-components/"'+
+        ' deep-url="../deep/"'+
+        ' datalets-list-url="../deep/datalets-list"'+
         ' data-url="'+ dataUrl + '"'+
         ' localization="'+ ln + '">'+
         '</co-datalets-creator-controllet>'

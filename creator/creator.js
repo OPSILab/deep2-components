@@ -21,9 +21,9 @@ CREATOR.injectHTML  = function(ln, datasets) {
     $("body").append(
         '<demo-data-sevc-controllet'+
         ' id="controllet"'+
-        ' components-url="../COMPONENTS/"'+
-        ' deep-url="../DEEP/"'+
-        ' datalets-list-url="../DEEP/datalets-list"'+
+        ' components-url="../deep-components/"'+
+        ' deep-url="../deep/"'+
+        ' datalets-list-url="../deep/datalets-list"'+
         ' localization="'+ ln + '">'+
         '</demo-data-sevc-controllet>'
     );
@@ -33,7 +33,7 @@ CREATOR.init = function() {
     $("#controllet").attr("datasets", JSON.stringify(datasets));
 
     setTimeout(() => {
-        $("#options")[0].innerHTML = "";
+        //$("#options")[0].innerHTML = "";
         $("button.outside").prop('disabled', true);
     }, 1000);
 };

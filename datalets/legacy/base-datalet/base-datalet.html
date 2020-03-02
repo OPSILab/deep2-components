@@ -541,11 +541,9 @@ Example :
 
                 $(this.$.fullscreen).click(function(){
                     var datalet =that.getHTML()
-
                     $(that.$.fullscreen_cover).show();
                     $(that.$.fullscreen_container).show();
                     $(that.$.fullscreen_close).show();
-
                     $(that.$.fullscreen_container).attr('srcdoc', ''+datalet[0]+datalet[1]+datalet[2]);
                 });
 

@@ -10,7 +10,7 @@
 
 <script type="text/javascript" src="../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
 
-<script src="../../../DEEPCLIENT/js/deepClient.js"></script>
+<script src="../../../deep-client/js/deepClient.js"></script>
 
 <dom-module id="select-visualization-controllet">
 
@@ -146,6 +146,23 @@
                     value : undefined
                 },
 
+                format : {
+                    type  : String,
+                    value : undefined
+                },
+				nodeID : {
+                    type  : String,
+                    value : undefined
+                },
+				datasetID : {
+                    type  : String,
+                    value : undefined
+                },
+				distributionID : {
+                    type  : String,
+                    value : undefined
+                },
+                
                 data : {
                     type  : Object,
                     value : undefined
@@ -299,7 +316,11 @@
                 }
 
                 this.params = {'data-url' : this.dataUrl};/*???*/
-
+                this.params['idraURL'] =  this.idraURL;
+                this.params['distributionID'] = this.distributionID;
+                this.params['datasetID'] = this.datasetID;
+                this.params['nodeID'] = this.nodeID;
+                this.params['format'] = this.format;
                 this.params["selectedfields"] = JSON.stringify(this.$.inputs.getSelectedInputs());
                 this.params["filters"] = JSON.stringify(this.filters);
                 this.params["aggregators"] = JSON.stringify(this.aggregators);
@@ -339,12 +360,13 @@
 //                ComponentService.deep_url = this.deepUrl;
 //                ComponentService.getComponent(dataletParams);
 
-                this.$.preview.loadDatalet(dataletParams);
-
-                if(this.$.inputs.$.datalettitle.value != "")
-                    this.$.add_button.removeAttribute("disabled");
-                else
-                    this.$.add_button.setAttribute("disabled", "disabled");
+                if(this.selectedDatalet!=undefined){							   
+					this.$.preview.loadDatalet(dataletParams);
+					if(this.$.inputs.$.datalettitle.value != "")
+						this.$.add_button.removeAttribute("disabled");
+					else
+						this.$.add_button.setAttribute("disabled", "disabled");
+				}
             },
 
             _addDatalet : function(){
@@ -358,15 +380,22 @@
                 delete this.params["hide_share"];
 
                 var data = {
-                    dataUrl: this.dataUrl,
-                    datalet: this.selectedDatalet+"-datalet",
-                    fields: this.selectedFields,
-                    params: this.params,
-                    staticData: staticData,
-                    context: this.context
-                };
+                        dataUrl: unescape(this.dataUrl),
+                        datalet: this.selectedDatalet+"-datalet",
+                        fields: this.selectedFields,
+                        params: this.params,
+                        staticData: staticData,
+                        context: this.context,
+    					format:this.format
+                    }
 
-                this.fire('data-sevc-controllet.dataletCreated', {data : data});
+    			var storeDatalet = {
+    					nodeID: this.nodeID,
+    					datasetID: this.datasetID,
+    					distributionID: this.distributionID
+    				}
+    				
+                this.fire('data-sevc-controllet.dataletCreated', {data : data, storeDatalet: storeDatalet});
             },
 
             _copy : function(o) {

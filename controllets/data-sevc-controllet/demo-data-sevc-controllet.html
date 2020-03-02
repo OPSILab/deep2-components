@@ -10,6 +10,7 @@
 <link rel="import" href="../select-dataset-controllet/demo-select-dataset-controllet.html">
 <link rel="import" href="../select-data-controllet/select-data-controllet.html" />
 <link rel="import" href="../select-visualization-controllet/select-visualization-controllet.html" />
+<script type="text/javascript" src="../../configuration.js"></script>
 
 <dom-module id="demo-data-sevc-controllet">
 
@@ -17,11 +18,11 @@
 
         <page-slider-controllet id="slider">
 
-            <neon-animatable>
+<!--             <neon-animatable> -->
 
-                <demo-select-dataset-controllet id="select_dataset" datasets={{datasets}} suggested-datasets={{suggestedDatasets}}></demo-select-dataset-controllet>
+<!--                 <demo-select-dataset-controllet id="select_dataset" datasets={{datasets}} suggested-datasets={{suggestedDatasets}}></demo-select-dataset-controllet> -->
 
-            </neon-animatable>
+<!--             </neon-animatable> -->
 
             <neon-animatable>
 
@@ -68,7 +69,7 @@
 
                 deepUrl : {
                     type : String,
-                    value : undefined
+                    value : getDeepBaseUrl()+'deep/'
                 },
 
                 componentsUrl : {
@@ -78,7 +79,7 @@
 
                 dataletsListUrl : {
                     type : String ,
-                    value : undefined
+                    value : getDeepBaseUrl()+'deep/datalets-list'
                 },
 
                 localization : {
@@ -90,12 +91,29 @@
 
             ready : function(){
                 ln["localization"] = this.localization;
+                var dataset_url=this.getQueryVar("url");
+				var format=this.getQueryVar("format");
+				var nodeID=this.getQueryVar("nodeID");
+				var datasetID=this.getQueryVar("datasetID");
+				var distributionID=this.getQueryVar("distributionID");
+				var page=0;
+				//this._updateSlider(page);
+				this._allowSecondStep(dataset_url,format,nodeID,datasetID,distributionID);
             },
 
             _updateSlider : function(e){
                 switch (e.detail.selected) {
+//                     case 0:
+//                         this.$.slider.setTitle(ln["slide1Title_" + this.localization], ln["slide1Subtitle_" + this.localization]);
+
+//                         this.$.slider.chevronLeft("invisible");
+//                         this.$.slider.chevronRight(false);
+
+//                         if(this.$.slider.getPrevSelected() == 1)
+//                             this.$.slider.chevronRight(true);
+//                         break;
                     case 0:
-                        this.$.slider.setTitle(ln["slide1Title_" + this.localization], ln["slide1Subtitle_" + this.localization]);
+                        this.$.slider.setTitle(ln["slide2Title_" + this.localization], ln["slide2Subtitle_" + this.localization]);
 
                         this.$.slider.chevronLeft("invisible");
                         this.$.slider.chevronRight(false);
@@ -104,15 +122,6 @@
                             this.$.slider.chevronRight(true);
                         break;
                     case 1:
-                        this.$.slider.setTitle(ln["slide2Title_" + this.localization], ln["slide2Subtitle_" + this.localization]);
-
-                        this.$.slider.chevronLeft(true);
-                        this.$.slider.chevronRight(false);
-
-                        if(this.$.slider.getPrevSelected() == 2)
-                            this.$.slider.chevronRight(true);
-                        break;
-                    case 2:
                         this.$.slider.setTitle(ln["slide3Title_" + this.localization], ln["slide3Subtitle_" + this.localization]);
 
                         this.$.slider.chevronLeft(true);
@@ -120,19 +129,24 @@
                 }
             },
 
-            _allowSecondStep : function(e){
-                this.$.slider.chevronRight(false);
+//             _allowSecondStep : function(e){
+//                 this.$.slider.chevronRight(false);
 
-                var f = Object.create(providerFactory);
-                var provider = f.getProvider(e.detail.url);
-                var dataUrl = provider.addLimit(e.detail.url);
+//                 var f = Object.create(providerFactory);
+//                 var provider = f.getProvider(e.detail.url);
+//                 var dataUrl = provider.addLimit(e.detail.url);
 
-                this.$.select_data.dataUrl = dataUrl;
-                this.$.select_data.init();
-                this.$.select_visualization.dataUrl = dataUrl;
-                this.$.select_visualization.init();
-            },
-
+//                 this.$.select_data.dataUrl = dataUrl;
+//                 this.$.select_data.init();
+//                 this.$.select_visualization.dataUrl = dataUrl;
+//                 this.$.select_visualization.init();
+//             },
+            getQueryVar: function(varName){
+				var queryStr = window.location.search + '&';
+				var regex = new RegExp('.*?[&\\?]' + varName + '=(.*?)&.*');
+				val = queryStr.replace(regex, "$1");
+				return val == queryStr ? false : val;
+			},
             _dataReady : function(e){
                 if(e.detail.ready) {
                     this.$.slider.chevronRight(true);
@@ -146,6 +160,32 @@
                 this.$.select_dataset.showDatasetInfo();
             },
 
+            _allowSecondStep : function(url,format,nodeID,datasetID,distributionID){
+				//console.log("_allowSecondStep");
+			
+                this.$.slider.chevronRight(false);
+
+                var f = Object.create(providerFactory);
+                var provider = f.getProvider(url);
+                var dataUrl = provider.addLimit(url);
+
+                this.$.select_data.dataUrl = dataUrl;
+                this.$.select_data.idraURL = getODFUrl();
+				this.$.select_data.format = format;
+				this.$.select_data.nodeID = nodeID;
+				this.$.select_data.datasetID = datasetID;
+				this.$.select_data.distributionID = distributionID;
+                this.$.select_data.init();
+				
+                this.$.select_visualization.dataUrl = dataUrl;
+                this.$.select_visualization.idraURL = getODFUrl();
+				this.$.select_visualization.format = format;
+				this.$.select_visualization.nodeID = nodeID;
+				this.$.select_visualization.datasetID = datasetID;
+				this.$.select_visualization.distributionID = distributionID;
+                this.$.select_visualization.init();
+            },
+            
             _allowThirdStep : function(){
                 this.$.slider.chevronRight(false);
                 var selectedFields = this.$.select_data.getSelectedFields();

@@ -1,13 +1,11 @@
 import * as alasql_utility   from '../vendors/alasql/alasql-utility.js';
-import ckan_Provider         from './providers-utility-controllet/ckan.js';
-import dkan_Provider         from './providers-utility-controllet/dkan.js';
-import generic_Provider      from './providers-utility-controllet/generic.js';
-import SPOD_Provider         from './providers-utility-controllet/spod.js';
-import SPARQL_Provider       from './providers-utility-controllet/sparql.js';
-import openDataSoft_Provider from './providers-utility-controllet/openDataSoft.js';
-import DataTypeConverter     from '../vendors/jsdatachecker/jsdatacheckermodule.js';
+import csvParser from './file-parser-controllet/csvParser.js';
+import jsonParser from './file-parser-controllet/jsonParser.js';
+// import xmlParser from './file-parser-controllet/xmlParser.js';
+import kmlParser from './file-parser-controllet/kmlParser.js';
 
-export const requestData = function(data_url)
+
+export const requestData = function(data_url,nodeID,datasetID,distributionID,idraURL,format)
 {
     return new Promise((res, rej) =>
     {
@@ -18,28 +16,29 @@ export const requestData = function(data_url)
             if (this.readyState === 4 )
             {
                 if(this.status === 200)
-                    res(JSON.parse(this.responseText));
+                    res({data: this.responseText, contentType: (format!=undefined)?format:xhttp.getResponseHeader("Content-Type")});
                 else
                     rej(this);
             }
         };
 
-        xhttp.open("GET", data_url, true);
+        xhttp.open("GET", idraURL+"Idra/api/v1/client/downloadFromUri?url="+encodeURIComponent(data_url), true);
         xhttp.send();
     });
 };
 
-export const selectData = function(json_results, data_url)
+export const selectData = function(json_results,contentType, data_url)
 {
-    let f = Object.create(providerFactory);
-    let provider = f.getProvider(data_url);
-    let data = provider.selectData(json_results);
+    let f = Object.create(fileParserFactory);
+    let provider = f.checkFile(contentType);
+    let data = provider.parse(json_results);
+    return data;
 
-    let converter = new DataTypeConverter();
+    // let converter = new DataTypeConverter();
 
-    let result = converter.inferJsonDataType(data, ["*"]);
-    result = converter.cast(result);
-    return result.dataset;
+    // let result = converter.inferJsonDataType(data, ["*"]);
+    // result = converter.cast(result);
+    // return result.dataset;
 };
 
 export const filterData = function(data, selected_fields, filters, aggregators, orders)
@@ -86,32 +85,37 @@ export const transformData = function(data, fields)
     return data;
 };
 
-let providerFactory =
-{
-    getProvider: function(dataUrl) {
-        if (dataUrl.indexOf("datastore_search?resource_id") > -1)
-            return new ckan_Provider();
-        else if (dataUrl.indexOf("search.json&resource_id") > -1)
-            return new dkan_Provider();
-        else if (dataUrl.indexOf("search?dataset") > -1 || dataUrl.indexOf("search/?dataset") > -1)
-            return new openDataSoft_Provider();
-        else if (dataUrl.indexOf("eurostat") > -1)
-            return new eurostat_Provider();
-        else if (dataUrl.indexOf("datiopen.istat.it") > -1)
-            return new istat_Provider();
-        else if (dataUrl.indexOf("ODataApi") > -1)
-            return new OData_Provider();
-        else if (dataUrl.indexOf("sparql?") > -1 )
-            return new SPARQL_Provider();
-        else if (dataUrl.indexOf("get-dataset-by-room-id-and-version") > -1 )
-            return new SPOD_Provider();
-        else if (dataUrl.search(/\Wwms\W?/gi) > -1)
-            return new WMS_Provider();
-        else if (dataUrl.search(/\Wkml\W?/gi) > -1)
-            return new KML_Provider();
-        else if (dataUrl.search(/\Wjson|geojson\W?/gi) > -1)
-            return new KML_Provider();
-        else
-            return new generic_Provider();//dkan and mysir --> ckan like
-    }
+let fileParserFactory = {
+    checkFile: function (contentType){
+        var type="";
+        console.log(contentType)
+            switch (contentType.toLowerCase()){
+                case "text/comma-separated-values":
+                case "text/csv":
+                case "application/csv":
+                case "application/excel":
+                case "application/vnd.ms-excel":
+                case "application/vnd.msexcel":
+                case "text/anytext":
+                case "text/plain":
+                case "csv":
+                    return new csvParser();
+                break;	
+                case "text/xml":
+                case "application/x-xml":
+                case "application/xml":
+                case "application/rss+xml":
+                case "xml":
+                    return new jsonParser();
+                break;
+                case "application/earthviewer":
+                case "application/vnd.google-earth.kml+xml":
+                case "kml":
+                    return new kmlParser();
+                break;
+                default:
+                    return new jsonParser();
+            };
+            return type;
+        }
 };

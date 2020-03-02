@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+
+<script type="text/javascript" src="../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
+<script type="text/javascript" src="../../bower_components/papaparse/papaparse.min.js"></script>
+<script type="text/javascript" src="../../bower_components/abdmob/x2js/xml2json.min.js"></script>
+<script type="text/javascript" src="togeojson.js"></script>
+<script src="csvParser.js"></script>
+<script src="xmlParser.js"></script>
+<script src="kmlParser.js"></script>
+<script src="jsonParser.js"></script>
+<script>
+    var fileParserFactory = {
+		checkFile: function (contentType){
+			console.log(contentType);
+			var type="";
+				switch (contentType){
+					case "text/comma-separated-values":
+					case "text/csv":
+					case "application/csv":
+					case "application/excel":
+					case "application/vnd.ms-excel":
+					case "application/vnd.msexcel":
+					case "text/anytext":
+					case "text/plain":
+					case "csv":
+						return new csvParser();
+					break;	
+					case "text/xml":
+					case "application/x-xml":
+					case "application/xml":
+					case "application/rss+xml":
+					case "xml":
+						return new xmlParser();
+					break;
+					case "application/earthviewer":
+					case "application/vnd.google-earth.kml+xml":
+					case "kml":
+						return new kmlParser();
+					break;
+					default:
+						return new jsonParser();
+				};
+				return type;
+			}
+    };
+
+
+</script>
+
+<dom-module id="file-parser-controllet">
+
+    <template></template>
+
+    <script>
+        Polymer({
+            is : 'file-parser-controllet',
+        });
+    </script>
+
+</dom-module>
