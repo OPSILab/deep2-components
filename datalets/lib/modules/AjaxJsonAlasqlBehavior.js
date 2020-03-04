@@ -1,9 +1,8 @@
 import * as alasql_utility   from '../vendors/alasql/alasql-utility.js';
 import csvParser from './file-parser-controllet/csvParser.js';
 import jsonParser from './file-parser-controllet/jsonParser.js';
-// import xmlParser from './file-parser-controllet/xmlParser.js';
+import xmlParser from './file-parser-controllet/xmlParser.js';
 import kmlParser from './file-parser-controllet/kmlParser.js';
-
 
 export const requestData = function(data_url,nodeID,datasetID,distributionID,idraURL,format)
 {
@@ -106,7 +105,7 @@ let fileParserFactory = {
                 case "application/xml":
                 case "application/rss+xml":
                 case "xml":
-                    return new jsonParser();
+                    return new xmlParser();
                 break;
                 case "application/earthviewer":
                 case "application/vnd.google-earth.kml+xml":

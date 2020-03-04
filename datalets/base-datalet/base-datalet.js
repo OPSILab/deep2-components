@@ -751,6 +751,10 @@ export default class BaseDatalet extends HTMLElement {
 
         //let script = `<script src="${baseUri}../lib/vendors/webcomponents_polyfill_ff/webcomponents-hi-sd-ce.js"></script>`;
         let script = `<script src="${baseUri}../lib/vendors/webcomponents_lite_polyfill/webcomponents-lite.js"></script>`;
+        script+=`<script type="text/javascript" src="${baseUri}../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
+        <script type="text/javascript" src="${baseUri}../../bower_components/papaparse/papaparse.min.js"></script>
+        <script type="text/javascript" src="${baseUri}../../bower_components/abdmob/x2js/xml2json.min.js"></script>
+        <script type="text/javascript" src="${baseUri}../lib/modules/file-parser-controllet/togeojson.js"></script>`;
 
         let style = `<style>html,body{height:100%;margin:0;padding:0;} ${this.component}{--base-datalet-visibility:none; --datalet-container-size:100%}</style>`;
         let datalet_definition = `<script type="module" src="${baseUri}${this.component}.js" ></script>`;
@@ -761,7 +765,8 @@ export default class BaseDatalet extends HTMLElement {
 
         if(!component.getAttribute("data"))
             component.setAttribute("data", JSON.stringify(this.filtered_data));
-
+        
+        //component.removeAttribute("data");
         return {script: script, style: style, datalet_definition: datalet_definition, component: component.outerHTML};
     }
 

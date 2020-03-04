@@ -28,7 +28,7 @@ export default (function () {
 			result.data.pop();
 			return result.data;
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 			return '';
 		}
 	};

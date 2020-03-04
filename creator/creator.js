@@ -82,7 +82,7 @@ CREATOR.enableButtons  = function(e) {
 };
 
 CREATOR.toggleButtons  = function(e) {
-    if(e.detail.selected == 2)
+    if(e.detail.selected == 1)
         $("button.outside").show();
     else
         $("button.outside").hide();

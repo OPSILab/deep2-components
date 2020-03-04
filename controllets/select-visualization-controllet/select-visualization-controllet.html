@@ -260,6 +260,7 @@
             init : function() {
                 if(this.selectedDatalet !== undefined)
                     this.$.vslider.reset();// fire _selectDatalet undefined
+
             },
 
             _translate : function(){
@@ -312,6 +313,7 @@
                 if(!e.detail.isReady) {
                     this.$.add_button.setAttribute("disabled", "true");
                     this.$.preview.eraseDatalet();
+                    this.fire('select-inputs_isReady', {isReady: true});
                     return;
                 }
 
@@ -366,7 +368,8 @@
 						this.$.add_button.removeAttribute("disabled");
 					else
 						this.$.add_button.setAttribute("disabled", "disabled");
-				}
+                }
+                
             },
 
             _addDatalet : function(){
