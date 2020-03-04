@@ -751,7 +751,8 @@ export default class BaseDatalet extends HTMLElement {
 
         //let script = `<script src="${baseUri}../lib/vendors/webcomponents_polyfill_ff/webcomponents-hi-sd-ce.js"></script>`;
         let script = `<script src="${baseUri}../lib/vendors/webcomponents_lite_polyfill/webcomponents-lite.js"></script>`;
-        script+=`<script type="text/javascript" src="${baseUri}../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
+        script+=`<script src="${baseUri}../lib/vendors/jquery/jquery.js"></script>
+        <script type="text/javascript" src="${baseUri}../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
         <script type="text/javascript" src="${baseUri}../../bower_components/papaparse/papaparse.min.js"></script>
         <script type="text/javascript" src="${baseUri}../../bower_components/abdmob/x2js/xml2json.min.js"></script>
         <script type="text/javascript" src="${baseUri}../lib/modules/file-parser-controllet/togeojson.js"></script>`;
@@ -763,10 +764,13 @@ export default class BaseDatalet extends HTMLElement {
         temp.innerHTML = this.outerHTML;
         let component = temp.firstChild;
 
-        if(!component.getAttribute("data"))
-            component.setAttribute("data", JSON.stringify(this.filtered_data));
+        if(!this.live){
+            if(!component.getAttribute("data"))
+                component.setAttribute("data", JSON.stringify(this.filtered_data));
+        }else{
+            component.removeAttribute("data");
+        }
         
-        //component.removeAttribute("data");
         return {script: script, style: style, datalet_definition: datalet_definition, component: component.outerHTML};
     }
 
