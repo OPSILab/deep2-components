@@ -131,8 +131,7 @@ export default class BaseDatalet extends HTMLElement {
     }
 
     async work_cycle() {
-        //if (!this.cache || (typeof ODE === 'undefined' && typeof parent.ODE === 'undefined'))
-        if (!this.cache)
+        if (!this.cache || (typeof ODE === 'undefined' && typeof parent.ODE === 'undefined'))
             this.use_live_data();
         else
             this.use_cache();
