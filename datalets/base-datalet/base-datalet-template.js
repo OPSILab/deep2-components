@@ -19,6 +19,7 @@ export const DataletBaseTemplate = `
             <div id="datalet_title"></div>
             <div id="menu" class="menu">
                 <div id="export_menu" data-balloon-pos="up"><i class="fas fa-download"></i></div>
+                <div id="saveidra" data-balloon-pos="up"><i class="fas fa-save"></i></div>
                 <div id="link" data-balloon-pos="up"><i class="fas fa-link"></i></div>
                 <div id="embed" data-balloon-pos="up"><i class="fas fa-code"></i></div>
                 <div id="fullscreen" data-balloon-pos="up"><i class="fas fa-expand"></i></div>

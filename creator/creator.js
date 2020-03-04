@@ -30,7 +30,7 @@ CREATOR.injectHTML  = function(ln, datasets) {
 };
 
 CREATOR.init = function() {
-    $("#controllet").attr("datasets", JSON.stringify(datasets));
+    // $("#controllet").attr("datasets", JSON.stringify(datasets));
 
     setTimeout(() => {
         //$("#options")[0].innerHTML = "";
@@ -38,9 +38,11 @@ CREATOR.init = function() {
     }, 1000);
 };
 
+
 CREATOR.translate = function() {
     $('#btn_share').attr("data-balloon", LN.translate("btn_share"));
     $('#btn_download').attr("data-balloon", LN.translate("btn_download"));
+    $('#btn_save_idra').attr("data-balloon", LN.translate("btn_save_idra"));
     $('#btn_embed').attr("data-balloon", LN.translate("btn_embed"));
     $('#btn_fullscreen').attr("data-balloon", LN.translate("btn_fullscreen"));
 
@@ -62,7 +64,7 @@ CREATOR.setListeners = function() {
     $("#btn_fullscreen").on("click", CREATOR.fullscreen);
     $("#btn_download").on("click", CREATOR.downloadModal);
     $("#btn_share").on("click", CREATOR.shareModal);
-    // $("#btn_html").on("click", CREATOR.html);
+    $("#btn_save_idra").on("click", CREATOR.saveonIdra);
     $("#btn_png").on("click", CREATOR.png);
     $("#btn_doc").on("click", CREATOR.doc);
     $("#btn_csv").on("click", CREATOR.fcsv);
@@ -118,6 +120,12 @@ CREATOR.shareModal  = function() {
 
 CREATOR.html  = function() {
     $("[selectedfields]")[0].shadow_root.querySelector('#export_to_html').click();
+    $("#download-modal")[0].style.display = "none";
+};
+
+CREATOR.saveonIdra  = function() {
+    $("[selectedfields]")[0].shadow_root.querySelector('#saveidra').click();
+    console.log("ADSADSADS");
     $("#download-modal")[0].style.display = "none";
 };
 

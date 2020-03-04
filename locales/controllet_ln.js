@@ -2279,8 +2279,10 @@ ln["step19_cn"] = "If you are satisfied of the visualization, you can share the 
 
 /** EN **/
 
+
 ln["btn_share_en"] = "Share";
 ln["btn_download_en"] = "Save As...";
+ln["btn_save_idra_en"] = "Save On Idra";
 ln["btn_embed_en"] = "Click to Copy HTML";
 ln["btn_fullscreen_en"] = "Fullscreen";
 
@@ -2301,6 +2303,7 @@ ln["fb2_en"] = "The image of the visualization will be downloaded and descriptiv
 
 ln["btn_share_it"] = "Condividi";
 ln["btn_download_it"] = "Salva come...";
+ln["btn_save_idra_it"] = "Salva su Idra";
 ln["btn_embed_it"] = "Clicca per copiare l'HTML";
 ln["btn_fullscreen_it"] = "Tutto schermo";
 

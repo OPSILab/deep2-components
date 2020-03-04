@@ -122,6 +122,7 @@ export default class BaseDatalet extends HTMLElement {
             this.selectData    = modules[config[1]].selectData;
             this.filterData    = modules[config[2]].filterData;
             this.transformData = modules[config[3]].transformData;
+            this.saveIdra = modules[0].saveOnIdra;
 
             this.work_cycle();
 
@@ -308,6 +309,8 @@ export default class BaseDatalet extends HTMLElement {
             this.shadow_root.querySelector('#fullscreen').style.display = 'none';
         if(this.hasAttribute("hide_share"))
             this.shadow_root.querySelector('#social').style.display = 'none';
+
+        this.shadow_root.querySelector('#saveidra').style.display = 'none';
     }
 
     add_listeners() {
@@ -315,6 +318,7 @@ export default class BaseDatalet extends HTMLElement {
 
         this.shadow_root.querySelector('#fullscreen').addEventListener('click', () => {this.fullscreen()});
         this.shadow_root.querySelector('#embed').addEventListener('click', () => {this.copy_html()});
+        this.shadow_root.querySelector('#saveidra').addEventListener('click',()=>{ this.saveonIdra() });
         this.shadow_root.querySelector('#link').addEventListener('click', () => {this.copy_link()});
         this.shadow_root.querySelector('#export_menu').addEventListener('click', () => {this.save_as()});
         this.shadow_root.querySelector('#img-action').addEventListener('click', () => {this.save_as_image()});
@@ -336,6 +340,18 @@ export default class BaseDatalet extends HTMLElement {
     }
 
     // LISTENER
+
+    async saveonIdra(){
+        let html_obj = this.get_html();
+        let style = `<style>html,body{margin:0;padding:0;height: 100%}</style>`;
+        let datalet = (html_obj.script + style + html_obj.datalet_definition + html_obj.component);
+        let iframe = document.createElement('iframe');
+        iframe.setAttribute("style", "width:100%;height:100%;min-height:482px;padding:0;margin:0;border:0;");
+        iframe.setAttribute("frameborder", "0");
+        iframe.setAttribute("scrolling", "no");
+        iframe.setAttribute("srcdoc", datalet);
+        let json_results = await this.saveIdra(this.nodeID,this.datasetID,this.distributionID,this.idraURL,iframe.outerHTML,this.datalettitle,this.description);
+    }
 
     fullscreen() {
         this.shadow_root.querySelector('#fullscreen-placeholder').style.display = 'block';

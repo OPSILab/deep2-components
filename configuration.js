@@ -1,5 +1,5 @@
 var configs = {
-		"odfURL": "https://idra-sandbox.eng.it/",
+		"odfURL": "http://localhost:8080/",
 		"deepBaseUrl": "http://localhost/deep/"
 	};
 

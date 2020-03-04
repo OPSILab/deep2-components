@@ -26,6 +26,33 @@ export const requestData = function(data_url,nodeID,datasetID,distributionID,idr
     });
 };
 
+export const saveOnIdra = function(nodeID,datasetID,distributionID,idraURL,datalet,title,description)
+{
+    return new Promise((res, rej) =>
+    {
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function()
+        {
+            if (this.readyState === 4 )
+            {
+                if(this.status === 200)
+                    res(this.status);
+                else
+                    rej(this);
+            }
+        };
+
+        xhttp.open("POST", idraURL+"Idra/api/v1/client/catalogues/"+nodeID+"/dataset/"+datasetID+"/distribution/"+distributionID+"/createDatalet", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify({
+            "datalet_html": datalet,
+            "title":title,
+            "description":description
+            }));
+    });
+};
+
 export const selectData = function(json_results,contentType, data_url)
 {
     let f = Object.create(fileParserFactory);

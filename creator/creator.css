@@ -36,6 +36,11 @@ button.outside:disabled {
 #btn_share {
     right: 344px;
 }
+
+#btn_save_idra {
+    right: 344px;
+}
+
 #btn_download {
     right: 240px;
 }
