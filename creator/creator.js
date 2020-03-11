@@ -13,7 +13,8 @@ CREATOR.ln  = function() {
 
     if(ln == 'es')
         ln = 'es-ES';
-
+    
+    LN.setUserLanguage(ln);
     return ln;
 };
 
@@ -125,8 +126,9 @@ CREATOR.html  = function() {
 
 CREATOR.saveonIdra  = function() {
     $("[selectedfields]")[0].shadow_root.querySelector('#saveidra').click();
-    console.log("ADSADSADS");
-    $("#download-modal")[0].style.display = "none";
+    $("#btn_save_idra")[0].setAttribute("data-balloon", LN.translate("save_idra_res"));
+    setTimeout(function(){ $("#btn_save_idra")[0].setAttribute("data-balloon", LN.translate("btn_save_idra")); }, 2000);
+    // $("#download-modal")[0].style.display = "none";
 };
 
 CREATOR.png  = function() {
@@ -151,8 +153,8 @@ CREATOR.fcsv  = function() {
 
 CREATOR.embed  = function() {
     $("[selectedfields]")[0].shadow_root.querySelector('#embed').click();
-    $("#btn_embed")[0].setAttribute("data-balloon", "Copied"); /*Copiato!*/
-    setTimeout(function(){ $("#btn_embed")[0].setAttribute("data-balloon", "Click to Copy HTML"); }, 3000);
+    $("#btn_embed")[0].setAttribute("data-balloon", LN.translate("copied_label")); /*Copiato!*/
+    setTimeout(function(){ $("#btn_embed")[0].setAttribute("data-balloon", LN.translate("btn_embed")); }, 3000);
 };
 
 CREATOR.share_fb = async function() {

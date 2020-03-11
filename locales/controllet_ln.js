@@ -1,4 +1,4 @@
-var LN = {
+ var LN = {
     userLanguage: 'en'
 };
 
@@ -13,6 +13,8 @@ LN.init = function() {
 
         if(['en', 'it', 'fr', 'nl', 'es', 'cn'].indexOf(LN.userLanguage) == -1)
             LN.userLanguage = 'en';
+
+            console.log(LN.userLanguage)
     } catch (e) {
         console.log(e);
     }
@@ -2283,7 +2285,9 @@ ln["step19_cn"] = "If you are satisfied of the visualization, you can share the 
 ln["btn_share_en"] = "Share";
 ln["btn_download_en"] = "Save As...";
 ln["btn_save_idra_en"] = "Save On Idra";
+ln["save_idra_res_en"] = "Saved";
 ln["btn_embed_en"] = "Click to Copy HTML";
+ln["copied_label_it"] = "COPIED"
 ln["btn_fullscreen_en"] = "Fullscreen";
 
 ln["btn_png_en"] = "Save as Image (.png)";
@@ -2304,7 +2308,9 @@ ln["fb2_en"] = "The image of the visualization will be downloaded and descriptiv
 ln["btn_share_it"] = "Condividi";
 ln["btn_download_it"] = "Salva come...";
 ln["btn_save_idra_it"] = "Salva su Idra";
+ln["save_idra_res_en"] = "Salvato";
 ln["btn_embed_it"] = "Clicca per copiare l'HTML";
+ln["copied_label_it"] = "Copiato"
 ln["btn_fullscreen_it"] = "Tutto schermo";
 
 ln["btn_png_it"] = "Salva come immagine (.png)";

@@ -350,7 +350,11 @@ export default class BaseDatalet extends HTMLElement {
         iframe.setAttribute("frameborder", "0");
         iframe.setAttribute("scrolling", "no");
         iframe.setAttribute("srcdoc", datalet);
-        let json_results = await this.saveIdra(this.nodeID,this.datasetID,this.distributionID,this.idraURL,iframe.outerHTML,this.datalettitle,this.description);
+        try{
+            let json_results = await this.saveIdra(this.nodeID,this.datasetID,this.distributionID,this.idraURL,iframe.outerHTML,this.datalettitle,this.description);
+        }catch(er){
+
+        }
     }
 
     fullscreen() {
