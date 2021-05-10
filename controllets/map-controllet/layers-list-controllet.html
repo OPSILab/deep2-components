@@ -1,6 +1,8 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
+
 <dom-module id="layers-list-controllet">
 
-    <style is="custom-style">
+    <style is="custom-style">	
 
         #layers_list_controllet_container {
             height: 100%;
@@ -63,7 +65,7 @@
         }
 
         paper-item.iron-selected {
-            background: #2196F3;
+            background: var(--mainColor);
             color: #FFFFFF;
         }
 
@@ -78,7 +80,7 @@
         }
 
         paper-item:hover:not(.iron-selected) {
-            background-color: #BBDEFB;
+            background-color: var(--thirdColor);
         }
 
         paper-icon-button {

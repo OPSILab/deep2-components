@@ -26,6 +26,20 @@ class MediaSliderDatalet extends BaseDatalet
         `);
     }
 
+var cssId = 'cssTheme'; 
+if (!document.getElementById(cssId))
+{
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+
     async render(data)
     {
         //console.log('RENDER - mediaslider-datalet');
@@ -50,7 +64,7 @@ class MediaSliderDatalet extends BaseDatalet
 
             if(data[1] && data[1].data[i] && data[1].data[i] !== "") {
                 html += '<div class="camera_caption fadeFromBottom media_title">';
-                html += '<span style="font-weight: 700; color: #2196F3;">' + data[1].data[i] + '</span>';
+                html += '<span style="font-weight: 700; color: '+window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + data[1].data[i] + '</span>';
                 if (data[2] && data[2].data[i] && data[2].data[i] !== "")
                     html += '</br><span style="font-style: italic">' + data[2].data[i] + '</span>';
                 html += '</div>';

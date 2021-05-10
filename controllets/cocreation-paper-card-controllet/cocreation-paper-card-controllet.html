@@ -1,8 +1,12 @@
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" >
 <link rel="import" href="../../bower_components/polymer/polymer.html"/>
 <link rel="import" href="../../bower_components/paper-card/paper-card.html"/>
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html"/>
 <link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
+
+
 
 <script src="../../locales/cocreation_paper_card_ln.js"></script>
 
@@ -10,6 +14,7 @@
 
     <template>
         <style>
+			
             #card_container {
                 height: 153px;
                 width: 288px;
@@ -107,7 +112,7 @@
             }
 
             paper-fab.description {
-                background: #2196F3;
+                background: var(--mainColor);
             }
 
             paper-fab.assessment {
@@ -232,9 +237,10 @@
             },
 
             ready: function() {
+				var mainColor = "\""+window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+"\"";
                 var color = "#4CAF50";
                 if(this.roomType === "knowledge")
-                    color = "#2196F3";
+                    color = mainColor;
                 if(this.roomType === "media")
                     color = "#FF9800";
                 if(this.roomType === "commentarium")

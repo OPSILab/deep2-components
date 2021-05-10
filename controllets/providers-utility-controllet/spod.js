@@ -1,3 +1,20 @@
+var cssId = 'cssTheme'; 
+console.log("ELEMENT CSS: "+document.getElementById(cssId));
+if (!document.getElementById(cssId))
+{
+	console.log("-- Dentro lo script del COLORE");
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+	console.log("-- Fine script del COLORE");
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+console.log("STAMPA COLORE:"+customProps);
 function SPOD_Provider () {
 }
 
@@ -18,7 +35,7 @@ SPOD_Provider.prototype.getHTMLFormattedMetadata = function(dataset, resourceInd
 
 
     html += '<b>' + ln["room_" + ln["localization"]] + ':</b>' + dataset.roomName + '<br>';
-    html += '<b>' + ln["resourceName_" + ln["localization"]] + ':</b> <b style="color: #2196F3;">' + ((metas.title) ? metas.title : "") + '</b><br>';
+    html += '<b>' + ln["resourceName_" + ln["localization"]] + ':</b> <b style="color: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + ((metas.title) ? metas.title : "") + '</b><br>';
     html += '<b>' + ln["resourceDescription_" + ln["localization"]] + ':</b>' + ((metas.description) ? metas.description : "") + '</b><br>';
 
     html += '<b>' + ln["users_" + ln["localization"]] + ':</b> <div class="user_icons" style="display: flex; flex-direction: row;">';
@@ -31,7 +48,7 @@ SPOD_Provider.prototype.getHTMLFormattedMetadata = function(dataset, resourceInd
     }
     html += '</div>';
 
-    html += '<div style="height: 1px; background: #2196F3; margin: 12px 0;"></div>';
+    html += '<div style="height: 1px; background: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+'; margin: 12px 0;"></div>';
 
     // for(var i in metas)
     //     html += '<b>' + i + ':</b> ' + metas[i] + '<br>';

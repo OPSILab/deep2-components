@@ -349,7 +349,7 @@
 
                     $.ajax({
                         //url: "http://localhost:8080/Idra/api/v1/client/downloadFromUri?format="+this.format+"&url="+this.dataUrl,
-                        url: getODFUrl()+"Idra/api/v1/client/downloadFromUri?format="+this.format+"&url="+this.dataUrl,
+                        url: getODFUrl()+"Idra/api/v1/client/downloadFromUri?format="+this.format+"&url="+this.dataUrl+'&id='+this.distributionID,
                         //dataType: "json",
                         success: function(data, textStatus, xhr){
                             that.reset();

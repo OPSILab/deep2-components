@@ -19,6 +19,8 @@
 /* Layout helpers
 ----------------------------------*/
 /*spod theme conflict*/
+@import url("../../../../../theme.css");
+
 datatable-datalet input[type=search] {
 	border: 2px inset;
 	/*height: 15px;*/
@@ -897,7 +899,8 @@ body .ui-tooltip {
 	/*border: 1px solid #cccccc;*/
 	/*height: 48px;*/
 	/*font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
-	background: #2196F3; /*#f6f6f6 url("jQueryUI-1.11.4/images/ui-bg_glass_100_f6f6f6_1x400.png") 50% 50% repeat-x;*/
+	background: var(--mainColor); /*#f6f6f6 url("jQueryUI-1.11.4/images/ui-bg_glass_100_f6f6f6_1x400.png") 50% 50% repeat-x;*/
+	/* background: #2196F3; */
 	font-weight: 700;
 	color: #ffffff;
 }
@@ -913,7 +916,8 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #2196F3;
+	border: 1px solid var(--mainColor);
+	/* border: 1px solid #2196F3; */
 	background: #fdf5ce url("jQueryUI-1.11.4/images/ui-bg_glass_100_fdf5ce_1x400.png") 50% 50% repeat-x;
 	font-weight: bold;
 	color: #ffffff;
@@ -932,15 +936,19 @@ body .ui-tooltip {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #2196F3;
+	border: 1px solid var(--mainColor);
+	/* border: 1px solid #2196F3; */
 	background: #ffffff url("jQueryUI-1.11.4/images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
 	font-weight: bold;
-	color: #2196F3;
+	color: var(--mainColor);
+	/* color: #2196F3; */
+	
 }
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
-	color: #2196F3;
+	color: var(--mainColor);
+	/* color: #2196F3; */
 	text-decoration: none;
 }
 
@@ -949,8 +957,9 @@ body .ui-tooltip {
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border: 1px solid #2196F3;
-	background: #2196F3 url("jQueryUI-1.11.4/images/ui-bg_highlight-soft_75_ffe45c_1x100.png") 50% top repeat-x;
+	border: 1px solid var(--mainColor);
+	/* border: 1px solid #2196F3; */
+	background: var(--mainColor) url("jQueryUI-1.11.4/images/ui-bg_highlight-soft_75_ffe45c_1x100.png") 50% top repeat-x;
 	color: #363636;
 }
 .ui-state-highlight a,
@@ -1422,7 +1431,7 @@ table.dataTable.display tbody tr:hover.selected > .sorting_3, table.dataTable.or
   background-color: #a5b2cb;
 }
 table.dataTable.no-footer {
-  border-bottom: 2px solid #2196F3;
+  border-bottom: 2px solid var(--mainColor);
 }
 table.dataTable.nowrap th, table.dataTable.nowrap td {
   white-space: nowrap;
@@ -1781,8 +1790,7 @@ table.dataTable tfoot th.ui-state-default:last-child {
 
 .dataTables_wrapper.no-footer .dataTables_scrollBody {
   /*border-bottom: none;*/
-  border-bottom: 2px solid #2196F3;
-	min-height: 280px;
+  border-bottom: 2px solid var(--mainColor); min-height: 280px;
 }
 
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info

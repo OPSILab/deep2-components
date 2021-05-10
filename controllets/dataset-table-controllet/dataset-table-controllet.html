@@ -1,3 +1,5 @@
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
@@ -9,6 +11,7 @@
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../data-table-controllet/data-table-controllet.html">
 
+
 <script type="text/javascript" src="../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
 <script type="text/javascript" src="../shared_js/FileSaver/FileSaver.min.js"></script>
 
@@ -16,12 +19,12 @@
 
     <template>
 
-        <style is="custom-style">
+        <style is="custom-style">	
 
             paper-checkbox {
                 height: 24px;
                 /*margin-top: 8px*/
-                --paper-checkbox-checked-color: #2196F3;
+                --paper-checkbox-checked-color: var(--mainColor);
                 --paper-checkbox-checked-ink-color: #FFFFFF;
                 --paper-checkbox-unchecked-color: #000000;
                 --paper-checkbox-unchecked-ink-color: #FFFFFF;
@@ -30,7 +33,7 @@
 
             paper-input {
                 max-width: 288px;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-icon-button{
@@ -52,11 +55,11 @@
                 height: 24px;
                 width: 24px;
                 padding: 0px;
-                --paper-icon-button-ink-color: #2196F3;
+                --paper-icon-button-ink-color: var(--mainColor);
             }
 
             paper-icon-button:hover{
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             paper-icon-button.clear {
@@ -144,7 +147,7 @@
             }
 
             #data_table_container th {
-                background: #2196F3;
+                background: var(--mainColor);
                 color: #FFFFFF;
                 font-weight: 700;
                 border-left: 2px solid #FFFFFF;
@@ -152,7 +155,7 @@
 
                 height: 24px;
                 padding: 12px 0 10px 0;
-                border-bottom: 2px solid #2196F3;
+                border-bottom: 2px solid var(--mainColor);
             }
 
             #data_table_container th:first-child {
@@ -272,7 +275,7 @@
                 line-height: 18px;
                 font-weight: 700;
                 color: white;
-                background-color: #00BCD4;
+                background-color: var(--secondColor);
                 opacity: 0.9;
                 position: absolute;
                 bottom: 4px;

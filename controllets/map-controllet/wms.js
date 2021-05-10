@@ -1,3 +1,20 @@
+var cssId = 'cssTheme'; 
+console.log("ELEMENT CSS: "+document.getElementById(cssId));
+if (!document.getElementById(cssId))
+{
+	console.log("-- Dentro lo script del COLORE");
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+	console.log("-- Fine script del COLORE");
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+console.log("STAMPA COLORE:"+customProps);
 function WMS_Provider() { //--> dataUrl inutile
     //this.dataUrl = dataUrl;
     //this.path = "result->records";
@@ -7,7 +24,6 @@ function WMS_Provider() { //--> dataUrl inutile
     this.Format = 'WMS';
     this.parsedUrl;
 }
-
 WMS_Provider.prototype.parseQueryStringParameters = function (srcUrl) {
     var url = '', params = {};
     srcUrl.match(/([^?=&]+)(=([^&]*))?/g).forEach(function (value) {
@@ -33,17 +49,17 @@ WMS_Provider.prototype.getHTMLFormattedMetadata = function (detail) {
     var html = '';
 
     if (layers && info) {
-        html += '<b>Service Name:</b> <b style="color: #2196F3;">' + info.Service.Title + '</b><br>';
+        html += '<b>Service Name:</b> <b style="color: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + info.Service.Title + '</b><br>';
         html += '<b>Service Description:</b> <b>' + info.Service.Abstract + '</b><br>';
         html += '<b>Service Version:</b> <b>' + info.Version + '</b><br>';
-        html += '<div style="height: 1px; background: #2196F3; margin: 12px 0;"></div>';
+        html += '<div style="height: 1px; background: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+'; margin: 12px 0;"></div>';
 
         html += '<b>Organization:</b> ' + info.Service.ContactInformation.ContactPersonPrimary.ContactOrganization + '<br>';
 
         if (this.parsedUrl.params.LAYERS){
             var ln = provider.parsedUrl.params.LAYERS ? (/(?:\w+:)?(\w+)/gi).exec(provider.parsedUrl.params.LAYERS)[1] : null;
             layers.filter(function(l){return l.Name==ln}).forEach(function(l,i){
-                html += '<b>Resource Name:</b> <b style="color: #2196F3;">' + l.Title + '</b><br>';
+                html += '<b>Resource Name:</b> <b style="color: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + l.Title + '</b><br>';
             })
         }else{
             html += '<b>Layers:</b> ' + layers.length + '<br>';

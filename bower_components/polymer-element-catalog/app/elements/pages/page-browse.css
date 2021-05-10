@@ -1,3 +1,4 @@
+@import url("../../../../../theme.css");
 :host {
   background: #fafafa;
 }
@@ -251,7 +252,7 @@ app-sidebar paper-toolbar {
 }
 
 #current-tag {
-  background: #2196F3;
+  background: var(--mainColor);
   color: rgba(255,255,255,0.87);
   padding: 12px;
   font-size: 16px;

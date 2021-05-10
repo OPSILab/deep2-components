@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="import" type="text/css" href="../themeFile.html" /> 
     <link rel="import"  href="../bower_components/iron-component-page/iron-component-page.html">
     <link rel="import"  href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
     <link rel="import"  href="../bower_components/paper-menu/paper-menu.html">
     <link rel="import"  href="../bower_components/paper-item/paper-item.html">
     <link rel="import"  href="../bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import"  href="../bower_components/paper-menu-button/paper-menu-button.html">
+	
+	
 
     <script type="text/javascript" src="../datalets/shared_js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/editarea_0_8_2/edit_area/edit_area_full.js"></script>
@@ -20,6 +23,7 @@
     <script type="text/javascript">
     </script>
     <style>
+
         body{
             font-family: 'Roboto', 'Noto', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -42,7 +46,7 @@
             height: 0.5em;
             width: 0.5em;
             border-radius: 50%;
-            background: #2196F3;
+            background: var(--mainColor);
             color: white;
             line-height: 2em;
             font-size: 1.87em;
@@ -51,7 +55,7 @@
         }
 
         #toolbar{
-            background: #2196F3 ;
+            background: var(--mainColor) ;
         }
     </style>
 </head>

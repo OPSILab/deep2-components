@@ -1,3 +1,5 @@
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/neon-animation/neon-animation.html">
@@ -12,6 +14,8 @@
 
 <link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 
+
+
 <script src="../../locales/datalet-slider_ln.js"></script>
 
 
@@ -19,7 +23,8 @@
 
     <template>
 
-        <style is="custom-style">
+        <style is="custom-style">	
+			
             #slider_container {
                 height: 100%;
                 width: 100%;
@@ -62,7 +67,7 @@
                 min-width: 40px;
                 border-radius: 50%;
                 background: #FFFFFF;
-                color: #2196F3;
+                color: var(--mainColor);
                 line-height: 40px;
                 font-size: 32px;
                 vertical-align: middle;
@@ -126,7 +131,7 @@
             }
 
             #slider_container paper-icon-button:hover{
-                color: #00AABF;
+                color: var(--fourthColor);
             }
 
             /*#slider_container paper-icon-button[disabled]{*/
@@ -142,7 +147,7 @@
             }
 
             #slider_container paper-fab {
-                --paper-fab-background : #00BCD4;
+                --paper-fab-background :  var(--secondColor);
                 --paper-fab: {
                      height: 40px;
                      width: 40px;

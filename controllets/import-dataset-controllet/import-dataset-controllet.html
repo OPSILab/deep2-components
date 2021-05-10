@@ -1,4 +1,5 @@
 <script src="../shared_js/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js"></script>
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="stylesheet" href="../shared_js/perfect-scrollbar/css/perfect-scrollbar.min.css">
 
 <!-- <script src="../../locales/controllet_ln.js"></script> -->
@@ -9,6 +10,8 @@
 
 <link rel="import" href="../select-dataset-controllet/select-dataset-controllet.html">
 <link rel="import" href="../select-data-controllet/select-data-controllet.html">
+
+
 
 <dom-module id="import-dataset-controllet">
 
@@ -44,13 +47,13 @@
         <paper-button id="btnImportFromSPOD">Import Dataset</paper-button>
 
         <style type="text/css">
-
+		
             #btnImportFromSPOD {
                 width: 170px;
                 position: absolute;
                 top: 18px;
                 right: 14px;
-                background: #00AABF;
+                background: var(--fourthColor);
                 color: #FFFFFF;
                 font-weight: 700;
                 z-index: 1;
@@ -70,7 +73,7 @@
             .sk-cube-grid .sk-cube {
                 width: 33%;
                 height: 33%;
-                background-color: #2196f3;
+                background-color: var(--mainColor);
                 float: left;
                 -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
                 animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;

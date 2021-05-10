@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
@@ -10,11 +11,19 @@
 <link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
 
+
+
+<!-- <link rel="stylesheet" href="../../theme.css"> -->
+<!-- <link id="CSStheme" href="http://localhost/deep/deep-components/theme.css" type="text/css" rel="stylesheet" /> -->
+
+
 <dom-module id="split-screen-controllet">
 
     <template>
-
-        <style is="custom-style">
+	
+	
+        <style is="custom-style">	
+	
             #split_screen_container {
                 height: 100%;
                 width: 100%;
@@ -37,7 +46,7 @@
                 min-width: 48px;
                 margin: 0 8px;
                 padding: 0;
-                background: #00BCD4;/*9E*/
+                background:  var(--secondColor);/*9E*/
                 color: #FFFFFF;
                 --paper-button-ink-color: #FFFFFF;
 
@@ -89,7 +98,7 @@
 
                 --paper-spinner-stroke-width: 8px;
 
-                --paper-spinner-layer-1-color: #2196F3;
+                --paper-spinner-layer-1-color: var(--mainColor);
                 --paper-spinner-layer-2-color: #F44336;;
                 --paper-spinner-layer-3-color: #FFEB3B;;
                 --paper-spinner-layer-4-color: #4CAF50;;

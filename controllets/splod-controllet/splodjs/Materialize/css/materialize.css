@@ -3,6 +3,7 @@
 	 * Copyright 2014-2017 Materialize
 	 * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
 	 */
+@import url("../../../../../../theme.css");
 	#content-splod-controllet .materialize-red {
 	  background-color: #e51c23 !important;
 	}
@@ -644,11 +645,12 @@
 	}
 
 	#content-splod-controllet .blue {
-	  background-color: #2196F3 !important;
+	  background-color: var(--mainColor) !important;
+	  /*background-color: var(--mainColor) !important;*/
 	}
 
 	#content-splod-controllet .blue-text {
-	  color: #2196F3 !important;
+	  color: var(--mainColor) !important;
 	}
 
 	#content-splod-controllet .blue.lighten-5 {
@@ -660,11 +662,11 @@
 	}
 
 	#content-splod-controllet .blue.lighten-4 {
-	  background-color: #BBDEFB !important;
+	  background-color: var(--thirdColor) !important;
 	}
 
 	#content-splod-controllet .blue-text.text-lighten-4 {
-	  color: #BBDEFB !important;
+	  color: var(--thirdColor) !important;
 	}
 
 	#content-splod-controllet .blue.lighten-3 {
@@ -868,11 +870,11 @@
 	}
 
 	#content-splod-controllet .cyan {
-	  background-color: #00bcd4 !important;
+	  background-color: var(--secondColor) !important;
 	}
 
 	#content-splod-controllet .cyan-text {
-	  color: #00bcd4 !important;
+	  color: var(--secondColor) !important;
 	}
 
 	#content-splod-controllet .cyan.lighten-5 {
@@ -3172,7 +3174,7 @@
 	  font-weight: 300;
 	  font-size: 0.8rem;
 	  color: #fff;
-	  background-color: #2196f3;
+	  background-color: var(--mainColor);
 	  border-radius: 2px;
 	}
 
@@ -9201,7 +9203,7 @@
 }
 
 #content-splod-controllet span.new, #content-splod-controllet span.badge{
-	background-color: #2196f3 !important;
+	background-color: var(--mainColor) !important;
 }
 
 #content-splod-controllet .row{
@@ -9254,7 +9256,7 @@
 /*Toasts*/
 #content-splod-controllet #tableToast{
 	position: fixed;
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 	opacity: 0.9;
 	z-index: 2;
 	width: 8em;
@@ -9554,7 +9556,7 @@
 }
 
 #content-splod-controllet #tableResultsProgress .indeterminate{
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 }
    
 
@@ -9590,23 +9592,23 @@
 
 #content-splod-controllet .tabs #tableResultTab a:hover,
 #content-splod-controllet .tabs #tableResultTab a.active{
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 	color: white;
 }
 
 #content-splod-controllet .tabs #tableResultTab a{
-	color:#2196f3;
+	color: var(--mainColor);
 }
 
 #content-splod-controllet .tabs #settingsTab a:hover,
 #content-splod-controllet .tabs #settingsTab a.active{
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 	color: white;
 }
 
 #content-splod-controllet .tabs #settingsTab a,
 #content-splod-controllet .tabs #settingsTab a i{
-	color:#2196f3;
+	color: var(--mainColor);
 }
 
 #content-splod-controllet .tabs #settingsTab a:hover i,
@@ -9616,13 +9618,13 @@
 
 #content-splod-controllet .tabs #helpTab a:hover,
 #content-splod-controllet .tabs #helpTab a.active{
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 	color: white;
 }
 
 #content-splod-controllet .tabs #helpTab a,
 #content-splod-controllet .tabs #helpTab a i{
-	color:#2196f3;
+	color: var(--mainColor);
 }
 
 #content-splod-controllet .tabs #helpTab a:hover i,
@@ -9793,7 +9795,7 @@
 }
 
 #content-splod-controllet #pendingQuerySpan .active{
-	color: #2196f3; 
+	color: var(--mainColor); 
 	font-weight: bold;
 }
 
@@ -9860,7 +9862,7 @@
 }
 /*
 #visibleFieldsButton{
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 	position:absolute;
 	left: 0.5em;
 	top: 1em;
@@ -9948,7 +9950,7 @@
 }
 /*
 .carousel .indicators .indicator-item.active{
-	background-color: #2196f3;
+	background-color: var(--mainColor);
 }
 
 .carousel .indicators .indicator-item{
@@ -9978,7 +9980,7 @@
 
 /*Endpoint selection*/
 #content-splod-controllet #endpointSelectionNav{
-	background-color:#2196f3;
+	background-color: var(--mainColor);
 }
 
 #content-splod-controllet #endpointSelectionTitle{

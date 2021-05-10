@@ -1,4 +1,7 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
+
+
 
 <script src="../../locales/info_list_ln.js"></script>
 
@@ -6,7 +9,9 @@
 
     <template>
 
-        <style is="custom-style">
+        <style is="custom-style">	
+
+			
             #info_container {
                 height: 100%;
                 width: 100%;
@@ -125,7 +130,7 @@
             }
 
             #info_container .user_status.owner{
-                color: #00BCD4;
+                color: var(--secondColor);
             }
 
             #info_container .user_status.joined{

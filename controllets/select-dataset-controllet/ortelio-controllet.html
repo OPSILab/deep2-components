@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
@@ -10,6 +11,7 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
+
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
@@ -32,9 +34,15 @@
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 
 
+
+<link id="cssTheme" href="http://localhost/deep/deep-components/theme.css" type="text/css" rel="stylesheet" />
+
+
 <dom-module id="ortelio-controllet">
     <template>
         <style>
+
+
             :host {
             --paper-dropdown-menu-icon: {
                  color: #000000;
@@ -55,25 +63,25 @@
 
             paper-textarea {
                 width: 100%;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-input {
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
             paper-dropdown-menu {
                 width: 100%;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-item.iron-selected {
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 color: #FFFFFF;
             }
 
             paper-radio-button {
                 height: 24px;
-                --paper-radio-button-checked-color: #2196F3;
+                --paper-radio-button-checked-color: var(--mainColor);
                 --paper-radio-button-checked-ink-color: #FFFFFF;
                 --paper-radio-button-unchecked-color: #000000;
                 --paper-radio-button-unchecked-ink-color: #FFFFFF;
@@ -88,7 +96,7 @@
             }
 
             paper-icon-button:hover{
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             paper-icon-button[disabled]{
@@ -112,12 +120,12 @@
             }
 
             paper-tab.iron-selected {
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 color: #FFFFFF;
             }
 
             paper-tab:not(.iron-selected):hover {
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             .item {
@@ -132,8 +140,8 @@
             }
 
             .item.expanded {
-                /*border: 2px solid #2196F3;*/
-                border-color: #2196F3;
+                /*border: 2px solid var(--mainColor);*/
+                border-color: var(--mainColor);
             }
 
             .pad {
@@ -146,7 +154,7 @@
             }
 
             .item.expanded .primary {
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             .longText {
@@ -499,7 +507,8 @@
                         if(this.$.list.selectedItem) {
 
                             var metas = this.$.list.selectedItem;
-                            var html = "<span style=\"color: #2196F3; font-weight: bold;\">" + this.$.list.selectedItem.package_name + "</span><br><br>";
+							var mainColor = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+                            var html = "<span style=\"color: "+mainColor+"; font-weight: bold;\">" + this.$.list.selectedItem.package_name + "</span><br><br>";
                             for(var i in metas)
                                 html += "<b>" + i + ":</b> " + metas[i] + "<br>";
                             this.$.info.innerHTML = html;

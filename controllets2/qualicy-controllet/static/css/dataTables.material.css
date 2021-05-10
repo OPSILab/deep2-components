@@ -1,5 +1,5 @@
 /* all */
-
+@import url("../../../../../theme.css");
 .dataTables_wrapper * {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 14px;
@@ -168,7 +168,8 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    background-color: #2196F3;
+    background-color: var(--mainColor);
+    /*background-color: #2196F3;*/
     color: #FFFFFF;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }

@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
@@ -9,6 +10,8 @@
 
 <link rel="import" href="../../datalets/dynamic-datatable-datalet/dynamic-datatable-datalet.html" />
 
+
+
 <dom-module id="multi-table-controllet">
 
     <template>
@@ -19,7 +22,7 @@
                 font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-size: 16px;
                 font-weight: bold;
-                --paper-tabs-selection-bar-color: #2196F3;
+                --paper-tabs-selection-bar-color: var(--mainColor);
             }
 
             paper-tab {
@@ -31,7 +34,7 @@
             }
 
             paper-tab:hover {
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             #multi_table_container {

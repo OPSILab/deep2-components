@@ -27,11 +27,14 @@
 * ROUTE-TO-PA Project - grant No 645860. - www.routetopa.eu
 *
 -->
-
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+
+
 
 <!--
 `draggable-element-controllet` is a controllet that represents a draggable element. It can be a target or source. When it's a suorce is possible to drag the content in to a
@@ -103,7 +106,7 @@ Example:
                 height: 1.5em;
                 width: 13.5em;
                 border-width : 0.0625em;
-                background-color: #2196f3;;
+                background-color: var(--mainColor);;
                 color: #ffffff;
                 padding: 1em;
                 overflow: hidden;
