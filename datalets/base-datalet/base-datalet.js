@@ -32,6 +32,7 @@ export default class BaseDatalet extends HTMLElement {
         this.format = this.getAttribute("format");
         this.datasetID = this.getAttribute("datasetID");
         this.distributionID = this.getAttribute("distributionID");
+        console.log(this.distributionID)
         this.idraURL = this.getAttribute("idraURL");
 
         this.selected_fields = this.getAttribute("selectedfields");
@@ -344,7 +345,8 @@ export default class BaseDatalet extends HTMLElement {
     async saveonIdra(){
         let html_obj = this.get_html();
         let style = `<style>html,body{margin:0;padding:0;height: 100%}</style>`;
-        let datalet = (html_obj.script + style + html_obj.datalet_definition + html_obj.component);
+        let style1= `<link rel="import" type="text/css" href="${this.deepUri}/deep-components/themeFile.html" >`
+        let datalet = (html_obj.script + style + style1 + html_obj.datalet_definition + html_obj.component);
         let iframe = document.createElement('iframe');
         iframe.setAttribute("style", "width:100%;height:100%;min-height:482px;padding:0;margin:0;border:0;");
         iframe.setAttribute("frameborder", "0");
@@ -378,7 +380,8 @@ export default class BaseDatalet extends HTMLElement {
 
         let html_obj = this.get_html();
         let style = `<style>html,body{margin:0;padding:0;height: 100%}</style>`;
-        let datalet = (html_obj.script + style + html_obj.datalet_definition + html_obj.component);
+        let style1= `<link rel="import" type="text/css" href="http://localhost/deep2/deep-components/themeFile.html" >`
+        let datalet = (html_obj.script + style + style1 + html_obj.datalet_definition + html_obj.component);
         let iframe = document.createElement('iframe');
         iframe.setAttribute("style", "width:100%;height:100%;min-height:482px;padding:0;margin:0;border:0;");
         iframe.setAttribute("frameborder", "0");

@@ -1,5 +1,5 @@
 /* BUTTON */
-@import url("../../theme.css");
+@import url("../theme.css");
 paper-button#add_button {
     display: none;
 }

@@ -22,6 +22,7 @@ class DatatableDatalet extends BaseDatalet
 
     template()
     {
+    	console.log("SDWQADSDQSADS")
         return this.create_node(`
             <link rel="stylesheet" type="text/css" href="./js/DataTables/datatables.css"/> 
         `);

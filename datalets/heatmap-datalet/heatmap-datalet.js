@@ -8,6 +8,20 @@ class HeatpmapDatalet extends BaseDatalet
     constructor()
     {
         super('heatmap-datalet');
+        let cssId = 'cssTheme';
+        if (!document.getElementById(cssId))
+        {
+            var head  = document.getElementsByTagName('head')[0];
+            var link  = document.createElement('link');
+            link.id   = cssId;
+            link.rel  = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '../../../theme.css';
+            link.media = 'all';
+            head.appendChild(link);
+        }
+        let customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+
     }
 
     handle_behaviour()
@@ -25,20 +39,6 @@ class HeatpmapDatalet extends BaseDatalet
     {
         return this.create_node('');
     }
-
-var cssId = 'cssTheme'; 
-if (!document.getElementById(cssId))
-{
-    var head  = document.getElementsByTagName('head')[0];
-    var link  = document.createElement('link');
-    link.id   = cssId;
-    link.rel  = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../../theme.css';
-    link.media = 'all';
-    head.appendChild(link);
-}
-var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
 
     async render(data)
     {

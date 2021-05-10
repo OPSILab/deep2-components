@@ -19,7 +19,7 @@
 /* Layout helpers
 ----------------------------------*/
 /*spod theme conflict*/
-@import url("../../../../../theme.css");
+@import url("../../../../theme.css");
 
 datatable-datalet input[type=search] {
 	border: 2px inset;

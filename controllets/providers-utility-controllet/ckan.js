@@ -7,7 +7,7 @@ if (!document.getElementById(cssId))
     link.id   = cssId;
     link.rel  = 'stylesheet';
     link.type = 'text/css';
-    link.href = '../../../theme.css';
+    link.href = 'theme.css';
     link.media = 'all';
     head.appendChild(link);
 }
