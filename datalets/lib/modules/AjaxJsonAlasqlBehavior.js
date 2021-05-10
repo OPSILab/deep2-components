@@ -21,7 +21,7 @@ export const requestData = function(data_url,nodeID,datasetID,distributionID,idr
             }
         };
 
-        xhttp.open("GET", idraURL+"Idra/api/v1/client/downloadFromUri?url="+encodeURIComponent(data_url), true);
+        xhttp.open("GET", idraURL+"Idra/api/v1/client/downloadFromUri?id="+distributionID+"&url="+encodeURIComponent(data_url), true);
         xhttp.send();
     });
 };

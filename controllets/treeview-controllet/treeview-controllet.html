@@ -28,10 +28,15 @@
 * ROUTE-TO-PA Project - grant No 645860. - www.routetopa.eu
 *
 -->
-
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
+
+<!--  <link rel="stylesheet" href="../../theme.css"> -->
+<!-- <link id="CSStheme" href="http://localhost/deep/deep-components/theme.css" type="text/css" rel="stylesheet" /> -->
+
 
 <!--
  `treeview-controllet` build a treeview from an input object. Each leaf fields of the object has a material design checkbox. When the user select a field
@@ -55,8 +60,10 @@ Example:
 
 <dom-module id="treeview-controllet">
     <template>
+	
 
         <style is="custom-style">
+		
 
             ::content .list {
                 margin: .5rem;
@@ -117,7 +124,7 @@ Example:
                 left: 6px;
                 width: 11px;
                 height: 16px;
-                border:2px solid #2196f3;
+                border:2px solid var(--mainColor);
                 border-top: none;
                 border-left: none;
                 opacity:0;

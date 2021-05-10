@@ -1,3 +1,5 @@
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" >
 <link rel="import" href="../../bower_components/polymer/polymer.html"/>
 <link rel="import" href="../../bower_components/paper-card/paper-card.html"/>
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
@@ -7,12 +9,13 @@
 <link rel="import" href="../../bower_components/iron-icon/image-icons.html"/>
 <link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 
+
 <script src="../../locales/cocreation_paper_card_ln.js"></script>
 
 <dom-module id="cocreation-paper-card-controllet">
 
     <template>
-        <style>
+        <style>	
 
             #card_container {
                 height: 200px;
@@ -51,7 +54,7 @@
 
                 background: #FFFFFF;
                 color: #000000;
-                --paper-button-ink-color: #00BCD4;
+                --paper-button-ink-color: var(--secondColor);
             }
 
             paper-button.info {
@@ -64,7 +67,7 @@
             }
 
             paper-button:hover {
-                color: #00BCD4;
+                color: var(--secondColor);
             }
 
             paper-icon-button[icon="info-outline"] {
@@ -166,7 +169,7 @@
             }
 
             paper-fab.description {
-                background: #2196F3;
+                background: var(--mainColor);
             }
 
             paper-fab.assessment {
@@ -284,8 +287,9 @@
 
             ready: function() {
                 var color = "#4CAF50";
+				var mainColor = "\""+window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+"\"";
                 if(this.roomType === "knowledge")
-                    color = "#2196F3";
+                    color = mainColor;
                 if(this.roomType === "media")
                     color = "#FF9800";
                 if(this.roomType === "commentarium")

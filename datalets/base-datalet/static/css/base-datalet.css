@@ -1,5 +1,6 @@
+@import url("../../../../../theme.css");
 a {
-    color: #00BCD4;
+    color: var(--secondColor);
     text-decoration: none;
 }
 a:hover {
@@ -157,7 +158,8 @@ a:hover {
 }
 
 .menu #fullscreen:hover, .menu #export_menu:hover, .menu #embed:hover, .menu #link:hover {
-    color: #2196F3;
+    color: var(--mainColor);
+    /* color: #2196F3; */
 }
 
 /* SOCIAL */
@@ -282,7 +284,7 @@ a:hover {
 }
 
 #save_as-container .action:hover {
-    background-color: #00BCD4;
+    background-color: var(--secondColor);
 }
 
 #save_as-close {
@@ -320,7 +322,8 @@ a:hover {
     font-size: 14px;
     width: calc(100% - 32px);
     height: 47px;
-    border-top: 1px solid #2196F3;
+    border-top: 1px solid var(--mainColor);
+    /*  border-top: 1px solid #2196F3; */
     background-color: #efefef;
 }
 
@@ -361,7 +364,7 @@ a:hover {
     height: 40px;
     width: 40px;
 
-    background-color: #00BCD4;
+    background-color: var(--secondColor);
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 

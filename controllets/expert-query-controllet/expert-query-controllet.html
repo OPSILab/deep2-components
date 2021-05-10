@@ -1,3 +1,5 @@
+
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
@@ -14,15 +16,15 @@
 <link rel="import" href="../filters-controllet/filters-controllet.html" />
 <link rel="import" href="../aggregators-controllet/aggregators-controllet.html" />
 
+
 <script type="text/javascript" src="../../alasql-utility/alasql.min.js"></script>
 <script type="text/javascript" src="../../alasql-utility/alasql-utility.js"></script>
 
 <dom-module id="expert-query-controllet">
-
+	
     <template>
-
         <style is="custom-style">
-
+			
             #expert_container {
                 display: none;
                 height: 100%;
@@ -68,7 +70,7 @@
                 font-size: 16px;
                 line-height: 24px;
             }
-
+			
             #expert_container_close #header_close {
                 height: 24px;
                 width: calc(100% - 384px);
@@ -76,7 +78,7 @@
                 text-align: center;
                 font-weight: 700;
 
-                color: #00BCD4;
+                color: var(--secondColor);
                 background: #FFFFFF;
                 cursor: pointer;
             }
@@ -102,8 +104,8 @@
                 height: 48px;
                 width: 48px;
                 padding: 8px;
-                color: #2196F3;
-                --paper-icon-button-ink-color: #2196F3;
+                color: var(--mainColor);
+                --paper-icon-button-ink-color: var(--mainColor);
             }
 
             paper-icon-button.disabled{
@@ -115,8 +117,8 @@
                 height: 48px;
                 width: 48px;
                 padding: 8px;
-                color:  #00BCD4;
-                --paper-icon-button-ink-color: #00BCD4;
+                color:  var(--secondColor);
+                --paper-icon-button-ink-color: var(--secondColor);
             }
 
             paper-icon-button[icon=fullscreen] {
@@ -131,7 +133,7 @@
             paper-tab {
                 font-weight: 700;
                 border-right: 2px solid #FFFFFF;
-                /*--paper-tab-ink: #2196F3;*/
+                /*--paper-tab-ink: var(--mainColor);*/
             }
 
             paper-tab:nth-child(1) {
@@ -140,11 +142,11 @@
 
             paper-tab.iron-selected {
                 color: #FFFFFF;
-                background: #2196F3;;
+                background: var(--mainColor);
             }
 
             paper-tab:not(.iron-selected):hover {
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             neon-animatable {
@@ -152,6 +154,7 @@
             }
 
         </style>
+</head>
 
         <paper-material id="expert_container_close" elevation="5">
             <div id="space"></div>
@@ -355,16 +358,22 @@
             },
 
             _updateQuery : function() {
-                if(this.selectedFields.length)
+                if(this.selectedFields.length){
+					var mainColor = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+					console.log("STAMPA COLORE nel file expert-query-controllet html: "+mainColor+" e prova dell import");
+					var str = '<span style="color:'+mainColor+'; font-weight: 700;">SELECT</span>';
+					var str3 = '<br><br><span style="color:'+mainColor+'; font-weight: 700;">WHERE</span>';
+					var str4 = '<br><br><span style="color:'+mainColor+'; font-weight: 700;">GROUP BY</span>';
                     this.$.query_container.innerHTML = alasql_QUERY_string(this.selectedFields, this.filters, this.aggregators, null)
-                            .replace('SELECT', '<span style="color:#2196F3; font-weight: 700;">SELECT</span>')
-//                            .replace('FROM ?', '<br><br><span style="color:#2196F3; font-weight: 700;">FROM</span> dataset')
+                            .replace('SELECT', str)
+//                            .replace('FROM ?', str2)
                             .replace('FROM ?', '')
-                            .replace('WHERE', '<br><br><span style="color:#2196F3; font-weight: 700;">WHERE</span>')
-                            .replace('GROUP BY', '<br><br><span style="color:#2196F3; font-weight: 700;">GROUP BY</span>')
+                            .replace('WHERE', str3)
+                            .replace('GROUP BY', str4)
                             .replace(/\[/g, '')
                             .replace(/\]/g, '')
                             .replace(/`/g, '');
+				}
                 else
                     this.$.query_container.innerHTML = "";
             }

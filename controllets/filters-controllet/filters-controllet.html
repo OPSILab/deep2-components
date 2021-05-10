@@ -1,3 +1,5 @@
+
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
@@ -9,6 +11,8 @@
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+
 
 <dom-module id="filters-controllet">
 
@@ -30,12 +34,12 @@
 
             paper-dropdown-menu {
                 width: 100%;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             :host {
             --paper-dropdown-menu-icon: {
-                 color: #2196F3;
+                 color: var(--mainColor);
              };
             }
 
@@ -45,13 +49,13 @@
             }
 
             paper-item.iron-selected {
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 color: #FFFFFF;
             }
 
             paper-input {
                 width: 100%;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-button {
@@ -59,7 +63,7 @@
                 height: 48px;
                 padding: 12px;
                 color: #FFFFFF;
-                background: #2196F3;
+                background: var(--mainColor);
                 font-weight: 700;
 
                 min-width: 96px;
@@ -96,8 +100,8 @@
             }
 
             paper-icon-button.add {
-                color: #2196F3;
-                --paper-icon-button-ink-color: #2196F3;
+                color: var(--mainColor);
+                --paper-icon-button-ink-color: var(--mainColor);
             }
 
             paper-icon-button.cancel {
@@ -140,7 +144,7 @@
             }
 
              .highlighted {
-                color: #2196F3;
+                color: var(--mainColor);
                 font-weight: 700;
             }
 
@@ -173,7 +177,7 @@
 
             input.parentheses:focus {
                 outline: none;
-                border-bottom: solid 1px #2196F3;
+                border-bottom: solid 1px var(--mainColor);
             }
 
             span.italic {

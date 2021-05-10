@@ -1,5 +1,5 @@
 /* CONTAINER */
-
+@import url("../../../../theme.css");
 #qualicy-container {
     width: 100%;
     height: 100%;
@@ -86,7 +86,7 @@ table.dataTable th {
 
 th .datatypeInconsistency, td.datatypeInconsistency::after {
     border-color: #E0E0E0;
-    border-top-color: #2196f3 !important;
+    border-top-color: var(--mainColor) !important;
 }
 
 th .metadatatypeInconsistency, td.metadatatypeInconsistency::after {
@@ -176,7 +176,7 @@ td.focus {
 
 .qualicy-tab button.active {
     color: #FFFFFF !important;
-    background-color: #2196F3;
+    background-color: var(--mainColor);
 }
 
 .qualicy-tab-content {
@@ -211,7 +211,7 @@ td.focus {
 }
 
 #type-menu:after {
-    border-top-color: #2196f3 !important;
+    border-top-color: var(--mainColor) !important;
 }
 
 #metatype-menu:after {
@@ -273,7 +273,7 @@ td.focus {
 }
 
 #type-container .fas {
-    color: #2196f3;
+    color: var(--mainColor);
 }
 
 #metatype-container .fas {
@@ -316,7 +316,7 @@ td.focus {
 }
 
 #modal-value {
-    color: #2196F3;
+    color: var(--mainColor);
 }
 
 .modal i {

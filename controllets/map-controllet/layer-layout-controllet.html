@@ -1,8 +1,11 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
+
 <script src="controllet_ln.js"></script>
 
 <dom-module id="layer-layout-controllet">
 
     <style>
+			
         :host {
             --paper-dropdown-menu-icon: {
                 color: #000000;
@@ -28,11 +31,11 @@
         }
 
         #header:hover {
-            color: #2196F3;
+            color:  var(--mainColor);
         }
 
         paper-dropdown-menu {
-            --paper-input-container-focus-color: #2196F3;
+            --paper-input-container-focus-color: var(--mainColor);
             width: 20%;
             margin-left: 15px;
         }

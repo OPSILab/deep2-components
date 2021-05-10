@@ -1,3 +1,5 @@
+@import url("../../../../theme.css");
+a {
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -639,11 +641,11 @@
 }
 
 .blue {
-  background-color: #2196F3 !important;
+  background-color: var(--mainColor) !important;
 }
 
 .blue-text {
-  color: #2196F3 !important;
+  color: var(--mainColor) !important;
 }
 
 .blue.lighten-5 {
@@ -655,11 +657,11 @@
 }
 
 .blue.lighten-4 {
-  background-color: #BBDEFB !important;
+  background-color: var(--thirdColor) !important;
 }
 
 .blue-text.text-lighten-4 {
-  color: #BBDEFB !important;
+  color: var(--thirdColor) !important;
 }
 
 .blue.lighten-3 {
@@ -863,11 +865,11 @@
 }
 
 .cyan {
-  background-color: #00bcd4 !important;
+  background-color: var(--secondColor) !important;
 }
 
 .cyan-text {
-  color: #00bcd4 !important;
+  color: var(--secondColor) !important;
 }
 
 .cyan.lighten-5 {

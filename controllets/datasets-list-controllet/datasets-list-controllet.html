@@ -1,3 +1,5 @@
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
@@ -11,11 +13,13 @@
 
 <link rel="import" href="../providers-utility-controllet/providers-utility-controllet.html">
 
+
+
 <script src="../shared_js/jquery.highlight-5.js"></script>
 
 <dom-module id="datasets-list-controllet">
     <template>
-        <style>
+        <style>	
 
             #datasets_list_container {
                 height: 100%;
@@ -108,7 +112,7 @@
                 text-align: center;
                 font-weight: 700;
                 color: #FFFFFF;
-                background: #2196F3;
+                background: var(--mainColor);
 
                 overflow: hidden;
                 white-space: nowrap;
@@ -132,7 +136,7 @@
 
             paper-input {
                 max-width: 288px;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-menu {
@@ -164,7 +168,7 @@
             }
 
             paper-item.iron-selected {
-                background: #2196F3 !important;;
+                background: var(--mainColor) !important;;
                 color: #FFFFFF;
                 /*font-weight: 700;*/
             }
@@ -180,7 +184,7 @@
             }
 
             paper-item:hover:not(.iron-selected) {
-                background: #BBDEFB !important;
+                background: var(--thirdColor) !important;
             }
 
             paper-item.menu-trigger.iron-selected {
@@ -197,7 +201,7 @@
             }
 
             paper-icon-button:hover{
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             paper-icon-button.clear {
@@ -222,7 +226,7 @@
 
                 --paper-spinner-stroke-width: 8px;
 
-                --paper-spinner-layer-1-color: #2196F3;
+                --paper-spinner-layer-1-color: var(--mainColor);
                 --paper-spinner-layer-2-color: #F44336;
                 --paper-spinner-layer-3-color: #FFEB3B;
                 --paper-spinner-layer-4-color: #4CAF50;

@@ -26,6 +26,20 @@ class HeatpmapDatalet extends BaseDatalet
         return this.create_node('');
     }
 
+var cssId = 'cssTheme'; 
+if (!document.getElementById(cssId))
+{
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+
     async render(data)
     {
         //console.log('RENDER - heatmap-datalet');
@@ -52,7 +66,8 @@ class HeatpmapDatalet extends BaseDatalet
 
         let stops = false;
         if (min < 0) {
-            stops = [[0, '#F44336'], [1, '#2196F3']];
+			var mainColor =  '\''+window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+'\'';
+            stops = [[0, '#F44336'], [1, mainColor]];
             min = -Math.max(Math.abs(min), Math.abs(max));
             max = Math.max(Math.abs(min), Math.abs(max));
         }

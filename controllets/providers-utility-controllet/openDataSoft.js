@@ -1,3 +1,20 @@
+var cssId = 'cssTheme'; 
+console.log("ELEMENT CSS: "+document.getElementById(cssId));
+if (!document.getElementById(cssId))
+{
+	console.log("-- Dentro lo script del COLORE");
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+	console.log("-- Fine script del COLORE");
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+console.log("STAMPA COLORE:"+customProps);
 function openDataSoft_Provider () {}
 
 openDataSoft_Provider.prototype.selectData = function(data) {
@@ -22,8 +39,8 @@ openDataSoft_Provider.prototype.getHTMLFormattedMetadata = function(dataset, res
     var html = '';
 
     // html += '<b>Producteur:</b> ' + dataset.publisher + '<br>';
-    html += '<b>' + ln["resourceName_" + ln["localization"]] + ':</b> <b style="color: #2196F3;">' + dataset.title + '</b><br>';
-    html += '<b>' + ln["resourceDescription_" + ln["localization"]] + ':</b>' + dataset.description + '</b><div style="height: 1px; background: #2196F3; margin: 12px 0;"></div>';
+    html += '<b>' + ln["resourceName_" + ln["localization"]] + ':</b> <b style="color: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + dataset.title + '</b><br>';
+    html += '<b>' + ln["resourceDescription_" + ln["localization"]] + ':</b>' + dataset.description + '</b><div style="height: 1px; background: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+'; margin: 12px 0;"></div>';
 
     filters = ["_publisher", "title", "description"];
 

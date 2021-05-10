@@ -1,3 +1,17 @@
+var cssId = 'cssTheme'; 
+if (!document.getElementById(cssId))
+{
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+
 export default (function () {
 
     function openDataSoft_Provider () {}
@@ -24,8 +38,8 @@ export default (function () {
         let html = '';
 
         // html += '<b>Producteur:</b> ' + dataset.publisher + '<br>';
-        html += '<b>' + ln["resourceName_" + ln["localization"]] + ':</b> <b style="color: #2196F3;">' + dataset.title + '</b><br>';
-        html += '<b>' + ln["resourceDescription_" + ln["localization"]] + ':</b>' + dataset.description + '</b><div style="height: 1px; background: #2196F3; margin: 12px 0;"></div>';
+        html += '<b>' + ln["resourceName_" + ln["localization"]] + ':</b> <b style="color: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + dataset.title + '</b><br>';
+        html += '<b>' + ln["resourceDescription_" + ln["localization"]] + ':</b>' + dataset.description + '</b><div style="height: 1px; background: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+'; margin: 12px 0;"></div>';
 
         filters = ["_publisher", "title", "description"];
 

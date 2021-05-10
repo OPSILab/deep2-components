@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
@@ -9,11 +10,13 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 
+
+
 <link rel="import" href="../datasets-list-controllet/datasets-list-controllet.html">
 
 <dom-module id="demo-select-dataset-controllet">
     <template>
-        <style>
+        <style>	
 
             #select_dataset_container {
                 margin-top: 8px;
@@ -88,16 +91,16 @@
 
             paper-tab.iron-selected {
                 color: #FFFFFF;
-                background: #2196F3;;
+                background: var(--mainColor);;
             }
 
             paper-tab:not(.iron-selected):hover {
-                color: #2196F3;
+                color: var(--mainColor);
                 /*transition: 0.5s;*/
             }
 
             paper-input {
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-icon-button {
@@ -108,8 +111,8 @@
 
             paper-icon-button[icon="settings"] {
                 cursor: pointer;
-                color: #00BCD4;
-                --paper-icon-button-ink-color: #00BCD4;
+                color: var(--secondColor);
+                --paper-icon-button-ink-color: var(--secondColor);
 
                 background: #E0E0E0;
                 float: right;
@@ -133,7 +136,7 @@
             paper-dropdown-menu {
                 /*width: 200px;*/
                 /*width: 50%;*/
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             #options paper-dropdown-menu { /*#ddl_provider, #ddl_version*/
@@ -148,7 +151,7 @@
             }
 
             paper-item.iron-selected {
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 color: #FFFFFF;
             }
 
@@ -169,7 +172,7 @@
             }
 
             #select_dataset_container p .option {
-                color: #2196F3;;
+                color: var(--mainColor);;
                 font-weight: 700;
             }
 

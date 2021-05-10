@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
+    <link rel="import" type="text/css" href="../../themeFile.html" />
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="../shared_js/jquery-1.11.2.min.js"></script>
@@ -10,6 +10,7 @@
 
     <link rel="import"  href="../../bower_components/iron-component-page/iron-component-page.html">
     <link rel="import"  href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
 
     <script type="text/javascript" src="../../docs/js/editarea_0_8_2/edit_area/edit_area_full.js"></script>
 
@@ -75,7 +76,7 @@
 
         #text_container {
             padding: 8px;
-            background: #BBDEFB;
+            background: var(--thirdColor);
 
             margin-top: 8px;
         }
@@ -86,14 +87,14 @@
         }
 
         #iframe_container {
-            border: 2px solid #BBDEFB;
+            border: 2px solid var(--thirdColor);
             border-top: 0;
             width: calc(100% - 4px);
             height: 698px;
         }
 
         #toolbar {
-            background: #2196F3;
+            background: var(--mainColor);
         }
 
         .title {

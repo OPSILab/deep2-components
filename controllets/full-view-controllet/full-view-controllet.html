@@ -1,10 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" type="text/css" href="../../themeFile.html" />
 
 <dom-module id="full-view-controllet">
 
   <style>
+
 
     :host {
       @apply(--layout-vertical);
@@ -40,9 +42,19 @@
 
   <template>
 
-    <paper-toolbar class="medium-tall" style="background: #2196F3;">
+    <paper-toolbar id="toEdit" class="medium-tall" style="background: #2196F3;">
       <paper-icon-button id="button" icon="clear" on-click="_onClearButtonClick"></paper-icon-button>
     </paper-toolbar>
+	
+	<script type="text/javascript">
+			    editColor = function () {
+							var mainColor = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+							console.log("STAMPA COLORE nel file full-view-controllet html: "+mainColor);
+							var styleEdit = "background: "+mainColor+";"
+				            document.getElementById("toEdit").setAttribute("style", styleEdit);
+				            return;
+				            	}();
+	</script>
 
     <div id="main" class="main">
     </div>

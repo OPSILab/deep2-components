@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="../shared_js/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+
+<link rel="import" type="text/css" href="../../themeFile.html" >
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <link rel="import" href="../../bower_components/polymer/polymer.html"/>
@@ -20,6 +23,7 @@
     <template>
 
         <style is="custom-style">
+			
             #create_card_container {
                 position: relative;
                 display: flex;
@@ -70,7 +74,7 @@
 
             #create_card_title {
                 font-weight: bold;
-                color: #2196F3;
+                color: var(--mainColor);
                 text-align: center;
             }
 
@@ -83,7 +87,7 @@
                 height: 48px;
                 width: calc(100% - 16px);
                 margin: 0px 0px 8px 8px;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             paper-button {
@@ -93,14 +97,14 @@
 
                 height: 48px;
                 width: 172px;
-                background-color: #00BCD4;
+                background-color:  var(--secondColor);
                 color: white;
                 font-weight: 700;
                 padding: 16px;
             }
 
             paper-button:hover {
-                background-color: #00AABF;
+                background-color: var(--fourthColor);
 
                 box-shadow: 0px 8px 12px #888;
                 -webkit-box-shadow: 0px 8px 12px #888;

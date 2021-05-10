@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
@@ -8,6 +9,8 @@
 <link rel="import" href="../select-inputs-controllet/select-inputs-controllet.html" />
 <link rel="import" href="../datalet-preview-controllet/datalet-preview-controllet.html" />
 
+
+
 <script type="text/javascript" src="../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
 
 <script src="../../../deep-client/js/deepClient.js"></script>
@@ -17,6 +20,7 @@
     <template>
 
         <style is="custom-style">
+			
             #select_visualization_container {
                 display: flex;
                 margin-top: 8px;
@@ -65,7 +69,7 @@
                 height: 48px;
                 width: 172px;
                 padding: 12px;
-                background: #00BCD4;
+                background:  var(--secondColor);
                 color: #FFFFFF;
                 font-weight: 700;
 
@@ -77,7 +81,7 @@
             }
 
             paper-button:hover {
-                background-color: #00AABF;
+                background-color: var(--fourthColor);
 
                 box-shadow: 0px 8px 12px #888;
                 -webkit-box-shadow: 0px 8px 12px #888;

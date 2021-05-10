@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
@@ -10,6 +11,7 @@
 
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
+
 <script type="text/javascript" src="../../bower_components/jsdatachecker/jsdatachecker.min.js"></script>
 
 <dom-module id="items-vslider-controllet">
@@ -17,6 +19,7 @@
     <template>
 
         <style is="custom-style">
+			
             paper-icon-button{
                 /*color: #FFFFFF;*/
                 height: 32px;/*48*/
@@ -40,12 +43,12 @@
             }
 
             .arrow-up{
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 padding-left: 70px;/*62*/
             }
 
             .arrow-down{
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 padding-left: 70px;
             }
 
@@ -97,11 +100,11 @@
 
             .legend.selected {
                 color: #FFFFFF;
-                background-color: #2196F3;
+                background-color: var(--mainColor);
                 opacity: 0.9;
 
                 /*background: black;*/
-                /*color: #2196F3;*/
+                /*color: var(--mainColor);*/
             }
 
             .new {
@@ -122,7 +125,7 @@
                 /*padding: 0px 8px;*/
                 padding: 4px 8px 4px 8px;
                 background-color: #B6B6B6;
-                --paper-input-container-focus-color: #2196F3;
+                --paper-input-container-focus-color: var(--mainColor);
             }
 
             .search{

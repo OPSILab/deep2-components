@@ -5,6 +5,8 @@
     <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
     <link rel="import" href="../page-slider-controllet.html" />
+    <link rel="import" type="text/css" href="../../themeFile.html" />
+
 </head>
 <body>
 
@@ -22,7 +24,22 @@
         <div class="page"><p>Pagina uno</p><p>Page one</p><p>Primera p&aacute;gina</p></div>
     </neon-animatable>
     <neon-animatable>
-        <div class="page" style="background-color: #BBDEFB;"><p>Pagina due</p><p>Page two</p><p>P&aacute;gina dos</p></div>
+        <div id="pagDue" class="page" style="background-color: #BBDEFB;"><p>Pagina due</p><p>Page two</p><p>P&aacute;gina dos</p></div>
+		<script type="text/javascript">
+			    editColor = function () {
+							var color = window.getComputedStyle(document.documentElement).getPropertyValue('--thirdColor');
+							
+				            		 var old = document.getElementById('pagDue'),
+					                    newDiv = document.createElement('div');
+				            		 var newStyle = "background-color: "+color+";";
+				            		 newDiv.id = old.id;
+				            		 newDiv.setAttribute("class", old.getAttribute("class"));
+				            		 newDiv.setAttribute("style", newStyle);
+				            		 old.parentNode.replaceChild(newDiv, old);
+				            		 return;
+				            	}();
+		</script>
+		
     </neon-animatable>
     <neon-animatable>
         <div class="page"><p>Pagina tre</p><p>Page three</p><p>P&aacute;gina tres</p></div>

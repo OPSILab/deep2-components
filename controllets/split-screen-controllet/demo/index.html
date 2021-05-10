@@ -17,10 +17,13 @@
     <link rel="import" href="../split-screen-controllet.html" />
 
     <link rel="import" href="../../../bower_components/paper-material/paper-material.html" />
+    <link rel="import" type="text/css" href="../../themeFile.html" />
+	
 </head>
 <body>
 
 <style>
+
 
     * {
         font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -66,7 +69,22 @@
 
         <paper-material elevation="5">
             <div class="content">
-                <div style="height: 48px; background: #2196F3;"></div>
+                <div id="divToEdit" style="height: 48px; background: #2196F3;"></div>
+				
+				<script type="text/javascript">
+			    editColor = function () {
+							var mainColor = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+							console.log("STAMPA COLORE nel file index html: "+mainColor);
+				            		 var old = document.getElementById('divToEdit'),
+					                    newDiv = document.createElement('div');
+				            		 var newStyle = "height: 48px; background: "+mainColor+";";
+				            		 newDiv.id = old.id;
+				            		 newDiv.setAttribute("style", newStyle);
+				            		 old.parentNode.replaceChild(newDiv, old);
+				            		 return;
+				            	}();
+			</script>
+				
                 <p>1 1 1 Bla bla bla</p>
             </div>
         </paper-material>

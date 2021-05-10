@@ -1,10 +1,17 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
 <link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 
+
+
+<!-- <link rel="stylesheet" href="../../theme.css"> -->
+<!-- <link id="CSStheme" href="http://localhost/deep/deep-components/theme.css" type="text/css" rel="stylesheet" /> -->
+
 <dom-module id="select-fields-controllet">
+
 
     <style is="custom-style">
 
@@ -29,7 +36,7 @@
         }
 
         #select_fields_controllet_container #header:hover {
-            color: #2196F3;
+            color: var(--mainColor);
         }
 
         #select_fields_controllet_container #menu_container {
@@ -63,7 +70,7 @@
         }
 
         paper-item.iron-selected {
-            background: #2196F3;
+            background: var(--mainColor);
             color: #FFFFFF;
         }
 
@@ -78,7 +85,7 @@
         }
 
         paper-item:hover:not(.iron-selected) {
-            background-color: #BBDEFB;
+            background-color: var(--thirdColor);
         }
 
         #menu, #menu_container {

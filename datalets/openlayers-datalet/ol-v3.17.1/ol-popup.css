@@ -1,3 +1,4 @@
+@import url("../../../../theme.css");
 .ol-overlay-popup{
     width: 30%;
 }
@@ -58,7 +59,7 @@
 }
 
 .ol-popup-content UL LI {
-    color: #00BCD4;
+    color: var(--secondColor);
     white-space: nowrap;
     margin-top: 2px;
     font-size: 11px;

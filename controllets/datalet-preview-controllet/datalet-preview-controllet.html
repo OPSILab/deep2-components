@@ -1,3 +1,5 @@
+<!-- <link type="text/css" rel="stylesheet" href="http://localhost/deep/deep-components/theme.css" /> -->
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-material/paper-material.html" />
@@ -9,11 +11,14 @@
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
 
+
+
 <dom-module id="datalet-preview-controllet">
 
     <template>
 
         <style is="custom-style">
+			
             #preview_container {
                 height: 100%;
                 width: 100%;
@@ -64,7 +69,7 @@
             #preview_container #datalet_name{
                 font-size: 32px;
                 line-height: 48px;
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             #preview_container #datalet_description{
@@ -75,7 +80,7 @@
             }
 
             #preview_container .input_label {
-                color: #2196F3;
+                color: var(--mainColor);
                 font-weight: 700;
             }
 
@@ -104,11 +109,11 @@
 
             paper-tab.iron-selected {
                 color: #FFFFFF;
-                background: #2196F3;;
+                background: var(--mainColor);;
             }
 
             paper-tab:not(.iron-selected):hover {
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             neon-animatable {

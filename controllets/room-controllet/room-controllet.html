@@ -8,6 +8,7 @@
 
 <script src="../../locales/room_controllet_ln.js"></script>
 
+
 <dom-module id="room-controllet">
 
     <template>
@@ -70,13 +71,25 @@
             <div class="room-timestamp" style="color: #000000">{{timestamp}}</div>
 
             <paper-dialog id="room_info" class="room-tooltip">
-                <iron-icon icon="communication:call-made" class="this" style="color: #2196F3;"></iron-icon>
-                <p class="ptop">{{_thisRoom}} <b style="color: #2196F3;">{{subject}}</b>,</p>
-                <p>{{_createdBy}} <b style="color: #2196F3;">{{roomOwner}}</b> {{_has}}:</p>
+                <iron-icon id="toEdit" icon="communication:call-made" class="this" style="color: #2196F3;"></iron-icon>
+                <p class="ptop">{{_thisRoom}} <b id="toEdit2" style="color: #2196F3;">{{subject}}</b>,</p>
+                <p>{{_createdBy}} <b id="toEdit3" style="color: #2196F3;">{{roomOwner}}</b> {{_has}}:</p>
                 <p><iron-icon class="div_icon" style$="background-color: {{roomColor}};"></iron-icon><b style$="color: {{roomColor}};">{{_howManyViews}} {{_views}}</b> (<b style$="color: {{roomColor}};">{{roomViews}}</b>),</p>
                 <p><iron-icon icon="editor:border-left"></iron-icon> <b>{{_howManyComments}} {{_comments}}</b> (<b>{{comments}}</b>) {{_and}}</p>
                 <p><iron-icon icon="editor:border-bottom"></iron-icon> <b>{{_howManyDatasets}} {{_datasets}}</b> (<b>{{datasets}}</b>).</p>
             </paper-dialog>
+			
+			<script type="text/javascript">
+			    editColor = function () {
+							var mainColor = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+							console.log("STAMPA COLORE nel file room-controllet html: "+mainColor);
+							var styleEdit = "color: "+mainColor+";"
+				            document.getElementById("toEdit").setAttribute("style", styleEdit);
+							document.getElementById("toEdit2").setAttribute("style", styleEdit);
+							document.getElementById("toEdit3").setAttribute("style", styleEdit);
+				            return;
+				            	}();
+			</script>
         </div>
 
     </template>

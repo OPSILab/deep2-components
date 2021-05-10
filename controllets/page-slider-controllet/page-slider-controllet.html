@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" /> 
 pa<link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/neon-animation/neon-animation.html">
@@ -10,6 +11,8 @@ pa<link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 
+
+
 <script type="text/javascript" src="./introjs/intro.js"></script>
 <link rel="stylesheet" href="./introjs/intro.css">
 
@@ -17,7 +20,8 @@ pa<link rel="import" href="../../bower_components/polymer/polymer.html" />
 
     <template>
 
-        <style is="custom-style">
+        <style is="custom-style">	
+			
             .header{
                 font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 width: 100%;
@@ -46,7 +50,7 @@ pa<link rel="import" href="../../bower_components/polymer/polymer.html" />
                 height: 64px;
                 width: 64px;
                 border-radius: 50%;
-                background: #2196F3;
+                background: var(--mainColor);
                 color: #FFFFFF;
                 line-height: 64px;
                 font-size: 32px;
@@ -65,7 +69,7 @@ pa<link rel="import" href="../../bower_components/polymer/polymer.html" />
                 height: 32px;
                 line-height: 32px;
                 font-size: 32px;
-                color: #2196F3;
+                color: var(--mainColor);
             }
 
             .subtitle {
@@ -83,16 +87,16 @@ pa<link rel="import" href="../../bower_components/polymer/polymer.html" />
             }
 
             paper-icon-button {
-                color: #00BCD4;
+                color: var(--secondColor);
                 height: 64px;
                 width: 64px;
                 padding: 0;
                 margin: 0;
-                --paper-icon-button-ink-color: #00BCD4;
+                --paper-icon-button-ink-color: var(--secondColor);
             }
 
             paper-icon-button:hover{
-                color: #00AABF;
+                color: var(--fourthColor);
             }
 
             paper-icon-button[disabled]{

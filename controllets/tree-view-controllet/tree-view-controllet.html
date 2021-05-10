@@ -1,3 +1,4 @@
+<link rel="import" type="text/css" href="../../themeFile.html" />
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 
 <link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
@@ -5,9 +6,16 @@
 <link rel="import" href="../../bower_components/paper-menu/paper-submenu.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 
+
+
+<!-- <link rel="stylesheet" href="../../theme.css"> -->
+<!-- <link id="CSStheme" href="http://localhost/deep/deep-components/theme.css" type="text/css" rel="stylesheet" /> -->
+
 <dom-module id="tree-view-controllet">
 
+
     <style is="custom-style">
+
         --paper-item {
         }
 
@@ -25,7 +33,7 @@
         }
 
         paper-item:not(.menu-trigger).iron-selected {
-            background-color: #2196F3;
+            background-color: var(--mainColor);
             color: #FFFFFF;
         }
 

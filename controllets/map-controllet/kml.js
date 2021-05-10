@@ -1,3 +1,20 @@
+var cssId = 'cssTheme'; 
+console.log("ELEMENT CSS: "+document.getElementById(cssId));
+if (!document.getElementById(cssId))
+{
+	console.log("-- Dentro lo script del COLORE");
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../theme.css';
+    link.media = 'all';
+    head.appendChild(link);
+	console.log("-- Fine script del COLORE");
+}
+var customProps = window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor');
+console.log("STAMPA COLORE:"+customProps);
 function KML_Provider() { //--> dataUrl inutile
     //this.dataUrl = dataUrl;
     //this.path = "result->records";
@@ -16,8 +33,8 @@ KML_Provider.prototype.getHTMLFormattedMetadata = function (detail) {
     var ds = detail.dataset;
     var info = detail.info;
     if (ds && info) {
-        html += '<b>Resource Name:</b> <b style="color: #2196F3;">' + (ds.rsTitle || ds.dsTitle) + '</b><br>';
-        html += '<div style="height: 1px; background: #2196F3; margin: 12px 0;"></div>';
+        html += '<b>Resource Name:</b> <b style="color: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+';">' + (ds.rsTitle || ds.dsTitle) + '</b><br>';
+        html += '<div style="height: 1px; background: '+ window.getComputedStyle(document.documentElement).getPropertyValue('--mainColor')+'; margin: 12px 0;"></div>';
 
         html += '<b>Geometry Type:</b> ' + info.geometryType + '<br>';
         html += '<b>Features Count:</b> ' + info.featuresCount + '<br>';
