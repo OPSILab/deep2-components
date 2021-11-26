@@ -13,7 +13,11 @@ class LeafletGeoJsonDatalet extends BaseDatalet
     {
         try {
             //{requestData:0}, {selectData:0}, {filterData:0}, {trasformData:0} -> [0, 0, 0, 0]
-            this.set_behaviours([AjaxJsonAlasqlBehavior]);
+            
+            //FIX MISSING VISUALIZATION MAP 25/11/2021
+            //this.set_behaviours([AjaxJsonAlasqlBehavior]);
+            this.set_behaviours([AjaxJsonAlasqlBehavior], [0, 0, 0, 0]);
+            //
         } catch (e) {
             console.log(e);
         }
@@ -43,7 +47,7 @@ class LeafletGeoJsonDatalet extends BaseDatalet
 
             let geo_layer = L.geoJson();
             let geo;
-
+            
             for (let i = 0; i < data[0].data.length; i++) {
                 if (Array.isArray(data[0].data[i])) {
                     if (!isNaN(data[0].data[i][0]) && !isNaN(data[0].data[i][1])) {
@@ -109,9 +113,15 @@ class LeafletGeoJsonDatalet extends BaseDatalet
                 }
             }
 
-            map._onResize();
-            map.invalidateSize(false);
-            map.fitBounds(geo_layer);
+            //FIX MISSING VISUALIZATION MAP 25/11/2021
+            //map._onResize();
+            //map.invalidateSize(false);
+            //map.fitBounds(geo_layer);
+
+            map.fitBounds(geo_layer.getBounds());
+            map.invalidateSize();
+            //
+
         } catch (e) {
             console.log()
         }
