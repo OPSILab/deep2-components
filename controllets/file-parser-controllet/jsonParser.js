@@ -1,13 +1,15 @@
 function jsonParser () {}
 
-const flattenJSON = (obj = {}, res = {}, extraKey = '') => {
-	for(key in obj) {
-	   if(typeof obj[key] !== 'object') {
-		  res[extraKey + key] = obj[key];
-	   } else {
-		  flattenJSON(obj[key], res, `${extraKey}${key}.`);
-	   };
-	};
+let flattenJSON = (obj = {}, res = {}, extraKey = '') => {
+	if (obj != undefined && Object.keys(obj) != undefined && Object.keys(obj).length >0 ) {
+		for(var key in obj) {
+			if(typeof obj[key] !== 'object') {
+			   res[extraKey + key] = obj[key];
+			}else {
+			   flattenJSON(obj[key], res, `${extraKey}${key}.`);
+			};
+		 };
+	} 		
 	return res;
 };
 
@@ -51,7 +53,7 @@ jsonParser.prototype.parse = function(json) {
 			console.log("1. Datalet Create ...");
 			if( isNGSILD(obj) ) {
 				obj=ngsild2flat(obj);
-				console.log("1. Datalet Create, ngsi-ld trasformed obj => " + obj);
+				console.log("1. Datalet Create, ngsi-ld trasformed....");
 			}
 			//
 

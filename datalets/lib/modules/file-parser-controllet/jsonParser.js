@@ -1,13 +1,15 @@
 export default (function () {
 
-	const flattenJSON = (obj = {}, res = {}, extraKey = '') => {
-		for(key in obj) {
-		   if(typeof obj[key] !== 'object') {
-			  res[extraKey + key] = obj[key];
-		   }else {
-			  flattenJSON(obj[key], res, `${extraKey}${key}.`);
-		   };
-		};
+	let flattenJSON = (obj = {}, res = {}, extraKey = '') => {
+		if (obj != undefined && Object.keys(obj) != undefined && Object.keys(obj).length >0 ) {
+			for(var key in obj) {
+				if(typeof obj[key] !== 'object') {
+				   res[extraKey + key] = obj[key];
+				}else {
+				   flattenJSON(obj[key], res, `${extraKey}${key}.`);
+				};
+			 };
+		} 		
 		return res;
 	};
 
@@ -56,7 +58,7 @@ export default (function () {
 		console.log("2. Datalet Preview ...");
 		if( isNGSILD(obj) ) {
 			obj=ngsild2flat(obj);
-			console.log("2. Datalet Preview, ngsi-ld trasformed obj => " + obj);
+			console.log("2. Datalet Preview, ngsi-ld trasformed....");
 		} 
 		//
 
