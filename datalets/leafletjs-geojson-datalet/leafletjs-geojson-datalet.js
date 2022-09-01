@@ -43,15 +43,24 @@ class LeafletGeoJsonDatalet extends BaseDatalet
                 attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            L.Icon.Default.imagePath = `${this.baseUri}leafletjs/images/`;
-
+			L.Icon.Default.imagePath = `${this.baseUri}leafletjs/images/`;
+              			
+  			var geojsonMarkerOptions = {
+    			radius: 8,
+    			fillColor: "#ff7800",
+    			color: "#000",
+    			weight: 1,
+    			opacity: 1,
+    			fillOpacity: 0.8
+			};
+  			
             let geo_layer = L.geoJson();
             let geo;
             
             for (let i = 0; i < data[0].data.length; i++) {
                 if (Array.isArray(data[0].data[i])) {
                     if (!isNaN(data[0].data[i][0]) && !isNaN(data[0].data[i][1])) {
-                        //coordinates.push([parseFloat(t.data[0].data[i][0]), parseFloat(t.data[0].data[i][1])]);
+						//coordinates.push([parseFloat(t.data[0].data[i][0]), parseFloat(t.data[0].data[i][1])]);
                         geo_layer.addData({
                             "type": "Feature",
                             "geometry": {
@@ -63,7 +72,51 @@ class LeafletGeoJsonDatalet extends BaseDatalet
                         continue;
                 }
                 else if (typeof data[0].data[i] === 'object') {
-                    geo = L.geoJson(data[0].data[i]).addTo(map);
+                    geo = L.geoJson(data[0].data[i],{
+	
+	
+						style: function(feature) {
+							
+							if(feature['geometry']['type'].toLowerCase()=='point') return;
+							
+							let stTmp = {
+								color: 'blue'
+							}
+							
+							if(data.length>1 && data[1].data.length > 0){
+								
+									if(data[1].data[i]['fill']!=undefined){
+										stTmp['fillColor']=data[1].data[i]['fill'];
+										stTmp['color']=data[1].data[i]['fill'];
+									}
+									
+									if(data[1].data[i]['fill-opacity']!=undefined){
+										stTmp['fillOpacity']=data[1].data[i]['fill-opacity'];
+									}
+									
+									if(data[1].data[i]['stroke']!=undefined){
+										stTmp['color']=data[1].data[i]['stroke'];
+									}
+								}
+								
+								return stTmp;
+    					},
+	
+                    	pointToLayer: function (feature, latlng) {
+					
+							let color = 'blue';
+							if(data.length>1 && data[1].data.length > 0){
+								if(data[1].data[i]['marker-color']!=undefined)
+									color = data[1].data[i]['marker-color']
+							}
+							console.log(color)
+							geojsonMarkerOptions.fillColor=color;
+        					/*return L.marker(latlng,{icon:L.ExtraMarkers.icon({
+    								markerColor: color
+  								})} );*/
+  							 return L.circleMarker(latlng, geojsonMarkerOptions);
+    					}
+                    }).addTo(map);
                     geo_layer.addData(data[0].data[i]);
                 }
                 else if (typeof data[0].data[i] === 'string' && data[0].data[i].startsWith('{"type":"')) {
